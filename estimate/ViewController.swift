@@ -132,25 +132,44 @@ extension ViewController: GMSAutocompleteResultsViewControllerDelegate {
         
         // separate the formattedAddress into city, state, country
         let seperatedformattedAddress =  place.formattedAddress!.componentsSeparatedByString(", ")
+        print(seperatedformattedAddress)
 
         // countries that use a state
         if seperatedformattedAddress.count == 3 {
-            let first = seperatedformattedAddress[0]        // city
-            let second = seperatedformattedAddress[1]       // country
-            let third = seperatedformattedAddress[2]        // state
-            
-            // if input includes a space
-            if first.containsString(" ") || second.containsString(" ") || third.containsString(" ") {
-                let city =  first.stringByReplacingOccurrencesOfString(" ", withString: "+")
-                let country = second.stringByReplacingOccurrencesOfString(" ", withString: "+")
-                let state = third.stringByReplacingOccurrencesOfString(" ", withString: "+")
-                load(country, city1: city, state1: state)
+            if seperatedformattedAddress[2] == "USA"    {
+                let first = seperatedformattedAddress[0]        // city
+                let second = seperatedformattedAddress[1]       // state
+                let third = seperatedformattedAddress[2]        // country
+                // if input includes a space
+                if first.containsString(" ") || second.containsString(" ") || third.containsString(" ") {
+                    let city =  first.stringByReplacingOccurrencesOfString(" ", withString: "+")
+                    let state = second.stringByReplacingOccurrencesOfString(" ", withString: "+")
+                    let country = third.stringByReplacingOccurrencesOfString(" ", withString: "+")
+                    load(country, city1: city, state1: state)
+                }
+                else    {
+                    let city = first
+                    let state = second
+                    let country = third
+                    load(country, city1: city, state1: state)
+                }
             }
+            // numbeo does not show state names for other countries
             else    {
-                let city = first
-                let country = second
-                let state = third
-                load(country, city1: city, state1: state)
+                let first = seperatedformattedAddress[0]        // city
+                let third = seperatedformattedAddress[2]        // country
+                
+                // if input includes a space
+                if first.containsString(" ") || third.containsString(" ") {
+                    let city =  first.stringByReplacingOccurrencesOfString(" ", withString: "+")
+                    let country = third.stringByReplacingOccurrencesOfString(" ", withString: "+")
+                    load(country, city1: city)
+                }
+                else    {
+                    let city = first
+                    let country = third
+                    load(country, city1: city)
+                }
             }
         }
         else if seperatedformattedAddress.count == 2 {
