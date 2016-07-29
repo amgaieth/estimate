@@ -71,20 +71,22 @@ class ViewController: UIViewController  {
                     
                     let webContent = NSString(data: urlContent, encoding: NSUTF8StringEncoding)
                     
-                    print(webContent)
+//                    print(webContent)
                     
                     let lines = webContent?.componentsSeparatedByString("\n")
                     if let actualLines = lines  {
-                        print(actualLines.count)
+//                        print(actualLines.count)
                     }
                     else    {
                         print("could not read the lines")
                     }
                     
-                    let filtered = lines!.filter {   $0.containsString("<tr><td>")   }
-                    
+                    let filteredArray = lines!.filter {   $0.containsString("<tr><td>")   }
+                    for var i = 0; i < filteredArray.count; i++ {
+                        print(filteredArray[i])
+                    }
                     dispatch_async(dispatch_get_main_queue()) {
-                        print(filtered)
+//                        print(filtered)
                     }
                 }
             }
@@ -103,7 +105,7 @@ class ViewController: UIViewController  {
                     
                     let webContent = NSString(data: urlContent, encoding: NSUTF8StringEncoding)
                     
-                    print(webContent)
+//                    print(webContent)
                     
                     let lines = webContent?.componentsSeparatedByString("\n")
                     if let actualLines = lines  {
@@ -113,10 +115,13 @@ class ViewController: UIViewController  {
                         print("could not read the lines")
                     }
                     
-                    let filtered = lines!.filter {   $0.containsString("<tr><td>")   }
+                    let filteredArray = lines!.filter {   $0.containsString("<tr><td>")   }
+                    for var i = 0; i < filteredArray.count; i++ {
+                        print(filteredArray[i])
+                    }
                     
                     dispatch_async(dispatch_get_main_queue()) {
-                        print(filtered)
+//                        print(filtered)
                     }
                 }
             }
@@ -132,7 +137,7 @@ extension ViewController: GMSAutocompleteResultsViewControllerDelegate {
         
         // separate the formattedAddress into city, state, country
         let seperatedformattedAddress =  place.formattedAddress!.componentsSeparatedByString(", ")
-        print(seperatedformattedAddress)
+//        print(seperatedformattedAddress)
 
         // countries that use a state
         if seperatedformattedAddress.count == 3 {
