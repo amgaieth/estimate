@@ -13,13 +13,10 @@ import GoogleMaps
 
 //class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
 class ViewController: UIViewController  {
-    @IBOutlet weak var countryTextField: UITextField!
-
-    @IBOutlet weak var infoLabel: UILabel!
-    @IBOutlet weak var productTextField: UITextField!
     
-    let categories = ["Restaurants", "Markets", "Transportation", "Utilities (Monthly)", "Sports And Leisure", "Clothing And Shoes", "Rent Per Month", "Buy Apartment Price", "Salaries And Financing"]
-    
+    var resultsViewController: GMSAutocompleteResultsViewController?
+    var searchController: UISearchController?
+    var resultView: UITextView?
     
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return 0
@@ -32,6 +29,25 @@ class ViewController: UIViewController  {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        resultsViewController = GMSAutocompleteResultsViewController()
+        resultsViewController?.delegate = self
+        
+        searchController = UISearchController(searchResultsController: resultsViewController)
+        searchController?.searchResultsUpdater = resultsViewController
+        
+        let subView = UIView(frame: CGRectMake(0, 65.0, 350.0, 45.0))
+        
+        subView.addSubview((searchController?.searchBar)!)
+        self.view.addSubview(subView)
+        
+        
+        searchController?.searchBar.sizeToFit()
+        searchController?.hidesNavigationBarDuringPresentation = false
+        
+        // When UISearchController presents the results view, present it in
+        // this view controller, not one further up the chain.
+        self.definesPresentationContext = true
+    
     }
     
     override func didReceiveMemoryWarning() {
@@ -40,20 +56,13 @@ class ViewController: UIViewController  {
         
     }
     
-    @IBAction func submitButton(sender: AnyObject) {
-        load()
-    }
-    
-    // Gets the information from a specific country
-    func load() {
+    func load(country1: String, city1: String) {
         
-        guard let country = countryTextField.text   else    {
-            print("country is nil")
-            return
-        }
+        //http://www.numbeo.com/cost-of-living/city_result.jsp?country=France&city=Paris
+        //http://www.numbeo.com/cost-of-living/city_result.jsp?country=United+States&city=San+Francisco%2C+CA
         
-        let attemptedUrl = NSURL(string: "http:www.numbeo.com/cost-of-living/country_result.jsp?country=\(country)")
-                
+        let attemptedUrl = NSURL(string: "http://www.numbeo.com/cost-of-living/city_result.jsp?country=\(country1)&city=\(city1)")
+        
         if let url = attemptedUrl   {
             
             let task = NSURLSession.sharedSession().dataTaskWithURL(url) { (data, response, error) -> Void in
@@ -74,65 +83,100 @@ class ViewController: UIViewController  {
                     
                     let filtered = lines!.filter {   $0.containsString("<tr><td>")   }
                     
-                    guard let product = self.productTextField.text     else    {
-                        print("product is nil")
-                        return
-                    }
-                    let productAndPriceArray = filtered.filter   {   $0.containsString(product)  }
-                    let productAndPrice = productAndPriceArray[0]
-                    
-                    
-                    
-                    let splitProductAndPrice = productAndPrice.componentsSeparatedByString("</td> <td style=\"text-align: right\" class=\"priceValue \"> ")
-                    
-                    let actualNameOfProduct = splitProductAndPrice[0].stringByReplacingOccurrencesOfString("<tr><td>", withString: "")
-                    let actualPriceOfProduct = splitProductAndPrice[1].stringByReplacingOccurrencesOfString("&nbsp;&#8364;</td>", withString: " currency")
-                    
-                    
                     dispatch_async(dispatch_get_main_queue()) {
-                        self.infoLabel.text = "\(actualNameOfProduct) costs \(actualPriceOfProduct)"
+                        print(filtered)
                     }
- 
                 }
             }
             task.resume()
         }
     }
-
-    @IBAction func autocompleteClicked(sender: AnyObject) {
-        let autocompleteController = GMSAutocompleteViewController()
-        autocompleteController.delegate = self
-        self.presentViewController(autocompleteController, animated: true, completion: nil)
+    
+    func load(country1: String, city1: String, state1: String) {
+        let attemptedUrl = NSURL(string: "http://www.numbeo.com/cost-of-living/city_result.jsp?country=\(country1)&city=\(city1)%2C+\(state1)")
+        
+        if let url = attemptedUrl   {
+            
+            let task = NSURLSession.sharedSession().dataTaskWithURL(url) { (data, response, error) -> Void in
+                
+                if let urlContent = data    {
+                    
+                    let webContent = NSString(data: urlContent, encoding: NSUTF8StringEncoding)
+                    
+                    print(webContent)
+                    
+                    let lines = webContent?.componentsSeparatedByString("\n")
+                    if let actualLines = lines  {
+                        print(actualLines.count)
+                    }
+                    else    {
+                        print("could not read the lines")
+                    }
+                    
+                    let filtered = lines!.filter {   $0.containsString("<tr><td>")   }
+                    
+                    dispatch_async(dispatch_get_main_queue()) {
+                        print(filtered)
+                    }
+                }
+            }
+            task.resume()
+        }
     }
 }
 
-extension ViewController: GMSAutocompleteViewControllerDelegate {
-    // Handle the user's selection.
-    func viewController(viewController: GMSAutocompleteViewController, didAutocompleteWithPlace place: GMSPlace) {
-        print("Place name: ", place.name)
-        print("Place address: ", place.formattedAddress)
-        print("Place attributions: ", place.attributions)
-        self.dismissViewControllerAnimated(true, completion: nil)
+// Handle the user's selection.
+extension ViewController: GMSAutocompleteResultsViewControllerDelegate {
+    func resultsController(resultsController: GMSAutocompleteResultsViewController, didAutocompleteWithPlace place: GMSPlace) {
+        searchController?.active = false
+        
+        // separate the formattedAddress into city, state, country
+        let seperatedformattedAddress =  place.formattedAddress!.componentsSeparatedByString(", ")
+
+        // countries that use a state
+        if seperatedformattedAddress.count == 3 {
+            let first = seperatedformattedAddress[0]        // city
+            let second = seperatedformattedAddress[1]       // country
+            let third = seperatedformattedAddress[2]        // state
+            
+            // if input includes a space
+            if first.containsString(" ") || second.containsString(" ") || third.containsString(" ") {
+                let city =  first.stringByReplacingOccurrencesOfString(" ", withString: "+")
+                let country = second.stringByReplacingOccurrencesOfString(" ", withString: "+")
+                let state = third.stringByReplacingOccurrencesOfString(" ", withString: "+")
+                load(country, city1: city, state1: state)
+            }
+            else    {
+                let city = first
+                let country = second
+                let state = third
+                load(country, city1: city, state1: state)
+            }
+        }
+        else if seperatedformattedAddress.count == 2 {
+            let city = seperatedformattedAddress[0]
+            let country = seperatedformattedAddress[1]
+            
+            load(country, city1: city)
+        }
+        else    {
+            print("fix this")
+        }
     }
     
-    func viewController(viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: NSError) {
+    func resultsController(resultsController: GMSAutocompleteResultsViewController,
+                           didFailAutocompleteWithError error: NSError){
         // TODO: handle the error.
         print("Error: ", error.description)
     }
     
-    // User canceled the operation.
-    func wasCancelled(viewController: GMSAutocompleteViewController)    {
-        self.dismissViewControllerAnimated(true, completion: nil)
-    }
-    
     // Turn the network activity indicator on and off again.
-    func didRequestAutocompletePredictions(viewController: GMSAutocompleteViewController)   {
+    func didRequestAutocompletePredictionsForResultsController(resultsController: GMSAutocompleteResultsViewController) {
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
     }
     
-    func didUpdateAutocompletePredictions(viewController: GMSAutocompleteViewController)    {
+    func didUpdateAutocompletePredictionsForResultsController(resultsController: GMSAutocompleteResultsViewController) {
         UIApplication.sharedApplication().networkActivityIndicatorVisible = false
     }
-    
 }
 
