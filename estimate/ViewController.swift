@@ -58,9 +58,6 @@ class ViewController: UIViewController  {
     
     func load(country1: String, city1: String) {
         
-        //http://www.numbeo.com/cost-of-living/city_result.jsp?country=France&city=Paris
-        //http://www.numbeo.com/cost-of-living/city_result.jsp?country=United+States&city=San+Francisco%2C+CA
-        
         let attemptedUrl = NSURL(string: "http://www.numbeo.com/cost-of-living/city_result.jsp?country=\(country1)&city=\(city1)")
         
         if let url = attemptedUrl   {
@@ -71,31 +68,26 @@ class ViewController: UIViewController  {
                     
                     let webContent = NSString(data: urlContent, encoding: NSUTF8StringEncoding)
                     
-//                    print(webContent)
-                    
                     let lines = webContent?.componentsSeparatedByString("\n")
-                    if let actualLines = lines  {
-//                        print(actualLines.count)
-                    }
-                    else    {
-                        print("could not read the lines")
-                    }
                     
                     let filteredArray = lines!.filter {   $0.containsString("<tr><td>")   }
-                    for var i = 0; i < filteredArray.count; i++ {
-                        print(filteredArray[i])
+                    
+                    for index in filteredArray.indices  {
+                        print(filteredArray[index])
                     }
+                    
                     dispatch_async(dispatch_get_main_queue()) {
-//                        print(filtered)
                     }
                 }
             }
             task.resume()
         }
-    }
+    }                       // if poducAndPrince.count < 2
     
     func load(country1: String, city1: String, state1: String) {
-        let attemptedUrl = NSURL(string: "http://www.numbeo.com/cost-of-living/city_result.jsp?country=\(country1)&city=\(city1)%2C+\(state1)")
+//        let attemptedUrl = NSURL(string: "http://www.numbeo.com/cost-of-living/city_result.jsp?country=\(country1)&city=\(city1)%2C+\(state1)")
+        
+        let attemptedUrl = NSURL(string: "http://www.numbeo.com/cost-of-living/city_result.jsp?country=United+States&city=\(city1)%2C+\(state1)")
         
         if let url = attemptedUrl   {
             
@@ -105,23 +97,35 @@ class ViewController: UIViewController  {
                     
                     let webContent = NSString(data: urlContent, encoding: NSUTF8StringEncoding)
                     
-//                    print(webContent)
-                    
                     let lines = webContent?.componentsSeparatedByString("\n")
-                    if let actualLines = lines  {
-                        print(actualLines.count)
-                    }
-                    else    {
-                        print("could not read the lines")
+                    
+                    var filteredArray = lines!.filter {   $0.containsString("<tr><td")   }
+
+                    let removeIndices = [0, 1, 2, 3, 4, 5, 59, 60, 61, 62, 63, 64, 65]
+                    let keepIndices = Set(filteredArray.indices).subtract(removeIndices)
+                    filteredArray = Array(PermutationGenerator(elements: filteredArray, indices: keepIndices))
+                    
+                    var product: String
+                    var price: String
+                    var dictionaryOfProductAndPrice = [String: String]()
+                    
+                    for index in filteredArray.indices  {
+                        let productAndPrice1 = filteredArray[index].componentsSeparatedByString("</td> <td style=\"text-align: right\" class=\"priceValue \"> ")
+                        let productAndPrice2 = filteredArray[index].componentsSeparatedByString("</td> <td style=\"text-align: right\" class=\"priceValue tr_highlighted\"")
+                        let productAndPrice = productAndPrice1 + productAndPrice2
+                        
+                        product = productAndPrice[0]
+                        price = productAndPrice[1]
+                        
+                        dictionaryOfProductAndPrice[product] = price
+                        
                     }
                     
-                    let filteredArray = lines!.filter {   $0.containsString("<tr><td>")   }
-                    for var i = 0; i < filteredArray.count; i++ {
-                        print(filteredArray[i])
+                    for (product, price) in dictionaryOfProductAndPrice {
+                        print("\(product): \(price)")
                     }
                     
                     dispatch_async(dispatch_get_main_queue()) {
-//                        print(filtered)
                     }
                 }
             }
