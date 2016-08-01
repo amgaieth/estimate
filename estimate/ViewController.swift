@@ -100,15 +100,8 @@ class ViewController: UIViewController  {
                     let lines = webContent?.componentsSeparatedByString("\n")
                     
                     var filteredArray = lines!.filter {   $0.containsString("<tr><td")   }
-                    
-                    
-//           delete this
-//                    let removeIndices = [0, 1, 2, 3, 4, 5, 59, 60, 61, 62, 63, 64, 65]
-//                    let keepIndices = Set(filteredArray.indices).subtract(removeIndices)
-//                    filteredArray = Array(PermutationGenerator(elements: filteredArray, indices: keepIndices))
 
                     var filteredArrayOfProducts = [String]()
-                    
                     
                     for i in filteredArray.indices  {
                         if filteredArray[i].rangeOfString("</td> <td style=\"text-align: right\" class=\"priceValue \">") != nil || filteredArray[i].rangeOfString("</td> <td style=\"text-align: right\" class=\"priceValue tr_highlighted\">") != nil {
@@ -116,15 +109,40 @@ class ViewController: UIViewController  {
                         }
                     }
                     
-                    for i in filteredArrayOfProducts.indices    {
-                        print(filteredArrayOfProducts[i])
+                    // text2 = text2.stringByReplacingOccurrencesOfString("\"", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
+
+                    
+                    var product: String
+                    var price: String
+                    var dictionaryOfProductAndPrice = [String: String]()
+                    
+                    var productAndPrice: String
+                    var productAndPriceArray = [String]()
+                    
+                    for i in filteredArrayOfProducts.indices {
+                        if filteredArrayOfProducts[i].rangeOfString("</td> <td style=\"text-align: right\" class=\"priceValue \">") != nil  {
+                            // remove "</td> <td style=\"text-align: right\" class=\"priceValue \">"
+                            productAndPrice = filteredArrayOfProducts[i].stringByReplacingOccurrencesOfString("</td> <td style=\"text-align: right\" class=\"priceValue \">", withString: "")
+                            // remove <tr><td>
+                            productAndPrice = productAndPrice.stringByReplacingOccurrencesOfString("<tr><td>", withString: "")
+                            // remove the code for currency
+                            productAndPrice = productAndPrice.stringByReplacingOccurrencesOfString("&nbsp;&#36;</td>", withString: " currency")
+                            productAndPriceArray.append(productAndPrice)
+                        }
+                        else if filteredArrayOfProducts[i].rangeOfString("</td> <td style=\"text-align: right\" class=\"priceValue tr_highlighted\">") != nil   {
+                            productAndPrice = filteredArrayOfProducts[i].stringByReplacingOccurrencesOfString("</td> <td style=\"text-align: right\" class=\"priceValue tr_highlighted\">", withString: "")
+                            productAndPrice = productAndPrice.stringByReplacingOccurrencesOfString("<tr><td class=\"tr_highlighted\">", withString: "")
+                            productAndPrice = productAndPrice.stringByReplacingOccurrencesOfString("&nbsp;&#36;</td>", withString: " currency")
+                            productAndPriceArray.append(productAndPrice)
+                        }
                     }
                     
+                    for i in productAndPriceArray.indices   {
+                        print(productAndPriceArray[i])
+                    }
+
                     
-//                    var product: String
-//                    var price: String
-//                    var dictionaryOfProductAndPrice = [String: String]()
-//                    
+//
 //                    for index in filteredArray.indices  {
 //                        let productAndPrice1 = filteredArray[index].componentsSeparatedByString("</td> <td style=\"text-align: right\" class=\"priceValue \"> ")
 //                        let productAndPrice2 = filteredArray[index].componentsSeparatedByString("</td> <td style=\"text-align: right\" class=\"priceValue tr_highlighted\"")
