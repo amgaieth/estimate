@@ -109,12 +109,8 @@ class ViewController: UIViewController  {
                         }
                     }
                     
-                    // text2 = text2.stringByReplacingOccurrencesOfString("\"", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
+                    // <tr><td>Imported Beer (11.2 oz small bottle) </td> <td style="text-align: right" class="priceValue "> 7.00&nbsp;&#36;</td>
 
-                    
-                    var product: String
-                    var price: String
-                    var dictionaryOfProductAndPrice = [String: String]()
                     
                     var productAndPrice: String
                     var productAndPriceArray = [String]()
@@ -136,43 +132,25 @@ class ViewController: UIViewController  {
                             productAndPriceArray.append(productAndPrice)
                         }
                     }
+
+                    var product: String
+                    var price: String
+                    // array that has two elements; the product and the price
+                    var prodAndpriceArray = [String]()
+                    var dict = [String: String]()
                     
                     for i in productAndPriceArray.indices   {
-                        print(productAndPriceArray[i])
+                        prodAndpriceArray = productAndPriceArray[i].componentsSeparatedByString("  ")
+                        product = prodAndpriceArray[0]
+                        price = prodAndpriceArray[1]
+                        dict[product] = price
+                        print("\(product): \(price)")
                     }
-
                     
-//
-//                    for index in filteredArray.indices  {
-//                        let productAndPrice1 = filteredArray[index].componentsSeparatedByString("</td> <td style=\"text-align: right\" class=\"priceValue \"> ")
-//                        let productAndPrice2 = filteredArray[index].componentsSeparatedByString("</td> <td style=\"text-align: right\" class=\"priceValue tr_highlighted\"")
-//                        let productAndPrice = productAndPrice1 + productAndPrice2
-//                        
-//                        product = productAndPrice[0]
-//                        price = productAndPrice[1]
-//                        
-//                        for i in productAndPrice.indices    {
-//                            print(productAndPrice[i])
-//                        }
-//                        
-                    
-//                        if product.rangeOfString("<tr><td class=\"tr_highlighted\">") != nil  {
-//                            product = product.stringByReplacingOccurrencesOfString("<tr><td class=\"tr_highlighted\">", withString: "")
-//                            price = price.stringByReplacingOccurrencesOfString("&nbsp;&#8364;</td>", withString: " currency")
-//                        }
-//                        
-//                        else if product.rangeOfString("<tr><td>") != nil    {
-//                            product = product.stringByReplacingOccurrencesOfString("<tr><td class=\"tr_highlighted\">", withString: "")
-//                            price = price.stringByReplacingOccurrencesOfString("&nbsp;&#8364;</td>", withString: " currency")
-//                        }
-                        
-//                        dictionaryOfProductAndPrice[product] = price
-                        
-//                    }
-                    
-//                    for (product, price) in dictionaryOfProductAndPrice {
+//                    for (product, price) in dict {
 //                        print("\(product): \(price)")
 //                    }
+
                     
                     dispatch_async(dispatch_get_main_queue()) {
                     }
