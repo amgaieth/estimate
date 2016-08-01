@@ -100,30 +100,61 @@ class ViewController: UIViewController  {
                     let lines = webContent?.componentsSeparatedByString("\n")
                     
                     var filteredArray = lines!.filter {   $0.containsString("<tr><td")   }
+                    
+                    
+//           delete this
+//                    let removeIndices = [0, 1, 2, 3, 4, 5, 59, 60, 61, 62, 63, 64, 65]
+//                    let keepIndices = Set(filteredArray.indices).subtract(removeIndices)
+//                    filteredArray = Array(PermutationGenerator(elements: filteredArray, indices: keepIndices))
 
-                    let removeIndices = [0, 1, 2, 3, 4, 5, 59, 60, 61, 62, 63, 64, 65]
-                    let keepIndices = Set(filteredArray.indices).subtract(removeIndices)
-                    filteredArray = Array(PermutationGenerator(elements: filteredArray, indices: keepIndices))
+                    var filteredArrayOfProducts = [String]()
                     
-                    var product: String
-                    var price: String
-                    var dictionaryOfProductAndPrice = [String: String]()
                     
-                    for index in filteredArray.indices  {
-                        let productAndPrice1 = filteredArray[index].componentsSeparatedByString("</td> <td style=\"text-align: right\" class=\"priceValue \"> ")
-                        let productAndPrice2 = filteredArray[index].componentsSeparatedByString("</td> <td style=\"text-align: right\" class=\"priceValue tr_highlighted\"")
-                        let productAndPrice = productAndPrice1 + productAndPrice2
-                        
-                        product = productAndPrice[0]
-                        price = productAndPrice[1]
-                        
-                        dictionaryOfProductAndPrice[product] = price
-                        
+                    for i in filteredArray.indices  {
+                        if filteredArray[i].rangeOfString("</td> <td style=\"text-align: right\" class=\"priceValue \">") != nil || filteredArray[i].rangeOfString("</td> <td style=\"text-align: right\" class=\"priceValue tr_highlighted\">") != nil {
+                            filteredArrayOfProducts.append(filteredArray[i])
+                        }
                     }
                     
-                    for (product, price) in dictionaryOfProductAndPrice {
-                        print("\(product): \(price)")
+                    for i in filteredArrayOfProducts.indices    {
+                        print(filteredArrayOfProducts[i])
                     }
+                    
+                    
+//                    var product: String
+//                    var price: String
+//                    var dictionaryOfProductAndPrice = [String: String]()
+//                    
+//                    for index in filteredArray.indices  {
+//                        let productAndPrice1 = filteredArray[index].componentsSeparatedByString("</td> <td style=\"text-align: right\" class=\"priceValue \"> ")
+//                        let productAndPrice2 = filteredArray[index].componentsSeparatedByString("</td> <td style=\"text-align: right\" class=\"priceValue tr_highlighted\"")
+//                        let productAndPrice = productAndPrice1 + productAndPrice2
+//                        
+//                        product = productAndPrice[0]
+//                        price = productAndPrice[1]
+//                        
+//                        for i in productAndPrice.indices    {
+//                            print(productAndPrice[i])
+//                        }
+//                        
+                    
+//                        if product.rangeOfString("<tr><td class=\"tr_highlighted\">") != nil  {
+//                            product = product.stringByReplacingOccurrencesOfString("<tr><td class=\"tr_highlighted\">", withString: "")
+//                            price = price.stringByReplacingOccurrencesOfString("&nbsp;&#8364;</td>", withString: " currency")
+//                        }
+//                        
+//                        else if product.rangeOfString("<tr><td>") != nil    {
+//                            product = product.stringByReplacingOccurrencesOfString("<tr><td class=\"tr_highlighted\">", withString: "")
+//                            price = price.stringByReplacingOccurrencesOfString("&nbsp;&#8364;</td>", withString: " currency")
+//                        }
+                        
+//                        dictionaryOfProductAndPrice[product] = price
+                        
+//                    }
+                    
+//                    for (product, price) in dictionaryOfProductAndPrice {
+//                        print("\(product): \(price)")
+//                    }
                     
                     dispatch_async(dispatch_get_main_queue()) {
                     }
