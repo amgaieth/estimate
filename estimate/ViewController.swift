@@ -11,7 +11,6 @@ import Foundation
 //import SwiftyJSON
 import GoogleMaps
 
-//class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
 class ViewController: UIViewController  {
     
     var resultsViewController: GMSAutocompleteResultsViewController?
@@ -70,10 +69,47 @@ class ViewController: UIViewController  {
                     
                     let lines = webContent?.componentsSeparatedByString("\n")
                     
-                    let filteredArray = lines!.filter {   $0.containsString("<tr><td>")   }
+                    var filteredArray = lines!.filter {   $0.containsString("<tr><td")   }
                     
-                    for index in filteredArray.indices  {
-                        print(filteredArray[index])
+                    var filteredArrayOfProducts = [String]()
+                    
+                    for i in filteredArray.indices  {
+                        if filteredArray[i].rangeOfString("</td> <td style=\"text-align: right\" class=\"priceValue \">") != nil || filteredArray[i].rangeOfString("</td> <td style=\"text-align: right\" class=\"priceValue tr_highlighted\">") != nil {
+                            filteredArrayOfProducts.append(filteredArray[i])
+                        }
+                    }
+                    
+                    var productAndPrice: String
+                    var productAndPriceArray = [String]()
+                    
+                    for i in filteredArrayOfProducts.indices {
+                        if filteredArrayOfProducts[i].rangeOfString("</td> <td style=\"text-align: right\" class=\"priceValue \">") != nil  {
+                            // remove "</td> <td style=\"text-align: right\" class=\"priceValue \">"
+                            productAndPrice = filteredArrayOfProducts[i].stringByReplacingOccurrencesOfString("</td> <td style=\"text-align: right\" class=\"priceValue \">", withString: "")
+                            // remove <tr><td>
+                            productAndPrice = productAndPrice.stringByReplacingOccurrencesOfString("<tr><td>", withString: "")
+                            // remove the code for currency
+                            productAndPriceArray.append(productAndPrice)
+                        }
+                        else if filteredArrayOfProducts[i].rangeOfString("</td> <td style=\"text-align: right\" class=\"priceValue tr_highlighted\">") != nil   {
+                            productAndPrice = filteredArrayOfProducts[i].stringByReplacingOccurrencesOfString("</td> <td style=\"text-align: right\" class=\"priceValue tr_highlighted\">", withString: "")
+                            productAndPrice = productAndPrice.stringByReplacingOccurrencesOfString("<tr><td class=\"tr_highlighted\">", withString: "")
+                            productAndPriceArray.append(productAndPrice)
+                        }
+                    }
+                    
+                    var product: String
+                    var price: String
+                    // array that has two elements; the product and the price
+                    var prodAndpriceArray = [String]()
+                    var dict = [String: String]()
+                    
+                    for i in productAndPriceArray.indices   {
+                        prodAndpriceArray = productAndPriceArray[i].componentsSeparatedByString("  ")
+                        product = prodAndpriceArray[0]
+                        price = prodAndpriceArray[1]
+                        dict[product] = price
+                        print("\(product): \(price)")
                     }
                     
                     dispatch_async(dispatch_get_main_queue()) {
@@ -81,12 +117,12 @@ class ViewController: UIViewController  {
                 }
             }
             task.resume()
+
         }
-    }                       // if poducAndPrince.count < 2
+    }
     
     func load(country1: String, city1: String, state1: String) {
-//        let attemptedUrl = NSURL(string: "http://www.numbeo.com/cost-of-living/city_result.jsp?country=\(country1)&city=\(city1)%2C+\(state1)")
-        
+
         let attemptedUrl = NSURL(string: "http://www.numbeo.com/cost-of-living/city_result.jsp?country=United+States&city=\(city1)%2C+\(state1)")
         
         if let url = attemptedUrl   {
@@ -108,10 +144,7 @@ class ViewController: UIViewController  {
                             filteredArrayOfProducts.append(filteredArray[i])
                         }
                     }
-                    
-                    // <tr><td>Imported Beer (11.2 oz small bottle) </td> <td style="text-align: right" class="priceValue "> 7.00&nbsp;&#36;</td>
 
-                    
                     var productAndPrice: String
                     var productAndPriceArray = [String]()
                     
@@ -121,14 +154,11 @@ class ViewController: UIViewController  {
                             productAndPrice = filteredArrayOfProducts[i].stringByReplacingOccurrencesOfString("</td> <td style=\"text-align: right\" class=\"priceValue \">", withString: "")
                             // remove <tr><td>
                             productAndPrice = productAndPrice.stringByReplacingOccurrencesOfString("<tr><td>", withString: "")
-                            // remove the code for currency
-                            productAndPrice = productAndPrice.stringByReplacingOccurrencesOfString("&nbsp;&#36;</td>", withString: " currency")
                             productAndPriceArray.append(productAndPrice)
                         }
                         else if filteredArrayOfProducts[i].rangeOfString("</td> <td style=\"text-align: right\" class=\"priceValue tr_highlighted\">") != nil   {
                             productAndPrice = filteredArrayOfProducts[i].stringByReplacingOccurrencesOfString("</td> <td style=\"text-align: right\" class=\"priceValue tr_highlighted\">", withString: "")
                             productAndPrice = productAndPrice.stringByReplacingOccurrencesOfString("<tr><td class=\"tr_highlighted\">", withString: "")
-                            productAndPrice = productAndPrice.stringByReplacingOccurrencesOfString("&nbsp;&#36;</td>", withString: " currency")
                             productAndPriceArray.append(productAndPrice)
                         }
                     }
@@ -146,12 +176,7 @@ class ViewController: UIViewController  {
                         dict[product] = price
                         print("\(product): \(price)")
                     }
-                    
-//                    for (product, price) in dict {
-//                        print("\(product): \(price)")
-//                    }
-
-                    
+                
                     dispatch_async(dispatch_get_main_queue()) {
                     }
                 }
@@ -217,6 +242,11 @@ extension ViewController: GMSAutocompleteResultsViewControllerDelegate {
         else    {
             print("fix this")
         }
+    }
+    
+    func resultsController(resultsController: GMSAutocompleteResultsViewController, didSelectPrediction prediction: GMSAutocompletePrediction) -> Bool  {
+        print("this function is called: \(prediction)")
+        return true
     }
     
     func resultsController(resultsController: GMSAutocompleteResultsViewController,

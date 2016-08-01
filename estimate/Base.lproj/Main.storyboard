@@ -20,6 +20,7 @@
                     </view>
                     <connections>
                         <outlet property="searchDisplayController" destination="YxG-9d-18k" id="D4u-2V-DgE"/>
+                        <segue destination="68i-lj-L9B" kind="show" identifier="viewControllerToTableView" id="7Bc-JR-1bo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -34,28 +35,37 @@
             </objects>
             <point key="canvasLocation" x="-361" y="189"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="Ddx-xd-sKs">
+        <!--Table View Controller-->
+        <scene sceneID="cWn-VM-JUu">
             <objects>
-                <viewController id="Nva-Gc-RnR" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="YeX-JN-cSv"/>
-                        <viewControllerLayoutGuide type="bottom" id="bWh-S8-HuP"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="fWh-zf-0Zo">
+                <tableViewController id="68i-lj-L9B" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="xN0-Sm-VbN">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vWv-JI-e7Q">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                            </scrollView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Eey-JV-Jj6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <sections>
+                            <tableViewSection id="cBa-3q-Taj">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="518" id="kWE-Ty-E8J">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="518"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kWE-Ty-E8J" id="O5b-Di-gM2">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="517.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="68i-lj-L9B" id="o7q-hg-IGD"/>
+                            <outlet property="delegate" destination="68i-lj-L9B" id="Hx8-Sg-2BL"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1oV-fc-bb8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="215" y="948"/>
+            <point key="canvasLocation" x="313" y="189"/>
         </scene>
     </scenes>
 </document>
