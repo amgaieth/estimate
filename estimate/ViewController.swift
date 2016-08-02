@@ -244,10 +244,12 @@ extension ViewController: GMSAutocompleteResultsViewControllerDelegate {
         }
     }
     
-    func resultsController(resultsController: GMSAutocompleteResultsViewController, didSelectPrediction prediction: GMSAutocompletePrediction) -> Bool  {
-        print("this function is called: \(prediction)")
-        return true
-    }
+//    func resultsController(resultsController: GMSAutocompleteResultsViewController, didSelectPrediction prediction: GMSAutocompletePrediction) -> Bool  {
+//        //performSegueWithIdentifier("viewControllerToTableView", sender: self)
+//        let controller = storyboard?.instantiateViewControllerWithIdentifier("DashboardViewController")
+//        self.presentViewController(controller!, animated: true, completion: nil)
+//        return true
+//        }
     
     func resultsController(resultsController: GMSAutocompleteResultsViewController,
                            didFailAutocompleteWithError error: NSError){

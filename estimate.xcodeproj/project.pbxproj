@@ -17,6 +17,10 @@
 		ED07647A1D38004400314955 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED0764781D38004400314955 /* LaunchScreen.storyboard */; };
 		ED0764851D38004500314955 /* estimateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0764841D38004500314955 /* estimateTests.swift */; };
 		ED0764901D38004500314955 /* estimateUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED07648F1D38004500314955 /* estimateUITests.swift */; };
+		ED2FFE3A1D502565002450A5 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2FFE391D502565002450A5 /* DashboardViewController.swift */; };
+		ED2FFE3D1D5148E1002450A5 /* groceryIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = ED2FFE3C1D5148E1002450A5 /* groceryIcon.png */; };
+		ED2FFE411D514B90002450A5 /* groceries.png in Resources */ = {isa = PBXBuildFile; fileRef = ED2FFE3E1D514B90002450A5 /* groceries.png */; };
+		ED2FFE421D514B90002450A5 /* restaurant.png in Resources */ = {isa = PBXBuildFile; fileRef = ED2FFE3F1D514B90002450A5 /* restaurant.png */; };
 		ED3CD4B71D42BBF800CF1D10 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3CD4B61D42BBF800CF1D10 /* Country.swift */; };
 		ED9B489A1D42B9B700693282 /* ListOfContries.json in Resources */ = {isa = PBXBuildFile; fileRef = ED9B48991D42B9B700693282 /* ListOfContries.json */; };
 /* End PBXBuildFile section */
@@ -60,6 +64,10 @@
 		ED07648B1D38004500314955 /* estimateUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = estimateUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED07648F1D38004500314955 /* estimateUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = estimateUITests.swift; sourceTree = "<group>"; };
 		ED0764911D38004500314955 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ED2FFE391D502565002450A5 /* DashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
+		ED2FFE3C1D5148E1002450A5 /* groceryIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = groceryIcon.png; sourceTree = "<group>"; };
+		ED2FFE3E1D514B90002450A5 /* groceries.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = groceries.png; sourceTree = "<group>"; };
+		ED2FFE3F1D514B90002450A5 /* restaurant.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = restaurant.png; sourceTree = "<group>"; };
 		ED3CD4B61D42BBF800CF1D10 /* Country.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
 		ED9B48991D42B9B700693282 /* ListOfContries.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ListOfContries.json; sourceTree = "<group>"; };
 		FB21F719B5F7B5F7DFB32A2F /* Pods_estimate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_estimate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -144,11 +152,15 @@
 				ED07646F1D38004400314955 /* AppDelegate.swift */,
 				ED0764711D38004400314955 /* ViewController.swift */,
 				ED0764731D38004400314955 /* Main.storyboard */,
+				ED2FFE3E1D514B90002450A5 /* groceries.png */,
+				ED2FFE3F1D514B90002450A5 /* restaurant.png */,
+				ED2FFE3C1D5148E1002450A5 /* groceryIcon.png */,
 				ED0764761D38004400314955 /* Assets.xcassets */,
 				ED0764781D38004400314955 /* LaunchScreen.storyboard */,
 				ED9B48991D42B9B700693282 /* ListOfContries.json */,
 				ED07647B1D38004400314955 /* Info.plist */,
 				ED3CD4B61D42BBF800CF1D10 /* Country.swift */,
+				ED2FFE391D502565002450A5 /* DashboardViewController.swift */,
 			);
 			path = estimate;
 			sourceTree = "<group>";
@@ -285,8 +297,11 @@
 			files = (
 				ED07647A1D38004400314955 /* LaunchScreen.storyboard in Resources */,
 				ED0764771D38004400314955 /* Assets.xcassets in Resources */,
+				ED2FFE421D514B90002450A5 /* restaurant.png in Resources */,
 				ED0764751D38004400314955 /* Main.storyboard in Resources */,
+				ED2FFE411D514B90002450A5 /* groceries.png in Resources */,
 				ED9B489A1D42B9B700693282 /* ListOfContries.json in Resources */,
+				ED2FFE3D1D5148E1002450A5 /* groceryIcon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -437,6 +452,7 @@
 				ED0764721D38004400314955 /* ViewController.swift in Sources */,
 				ED3CD4B71D42BBF800CF1D10 /* Country.swift in Sources */,
 				ED0764701D38004400314955 /* AppDelegate.swift in Sources */,
+				ED2FFE3A1D502565002450A5 /* DashboardViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
