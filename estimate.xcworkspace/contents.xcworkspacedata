@@ -1,28 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workspace
    version = "1.0">
-   <Group
-      location = "group:Icons"
-      name = "Icons">
-      <FileRef
-         location = "group:groceryIcon.png">
-      </FileRef>
-      <FileRef
-         location = "group:restaurantIcon.png">
-      </FileRef>
-      <FileRef
-         location = "group:sports.png">
-      </FileRef>
-      <FileRef
-         location = "group:transportation.png">
-      </FileRef>
-   </Group>
-   <FileRef
-      location = "group:Icons/sports.png">
-   </FileRef>
-   <FileRef
-      location = "group:Icons/transportation.png">
-   </FileRef>
    <FileRef
       location = "group:estimate.xcodeproj">
    </FileRef>
