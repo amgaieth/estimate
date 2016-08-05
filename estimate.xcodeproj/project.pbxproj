@@ -12,6 +12,8 @@
 		A76898F6F8808B6CE7BB8AE4 /* Pods_estimateTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA0EF755DD5209C416812335 /* Pods_estimateTests.framework */; };
 		ED008CCC1D540EB3003D6662 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED008CCB1D540EB3003D6662 /* Restaurant.swift */; };
 		ED008CCE1D5413AB003D6662 /* Groceries.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED008CCD1D5413AB003D6662 /* Groceries.swift */; };
+		ED008CD01D5420C4003D6662 /* Transportation.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED008CCF1D5420C4003D6662 /* Transportation.swift */; };
+		ED008CD21D542373003D6662 /* SportsAndLeisure.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED008CD11D542373003D6662 /* SportsAndLeisure.swift */; };
 		ED0764701D38004400314955 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED07646F1D38004400314955 /* AppDelegate.swift */; };
 		ED0764721D38004400314955 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0764711D38004400314955 /* ViewController.swift */; };
 		ED0764751D38004400314955 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED0764731D38004400314955 /* Main.storyboard */; };
@@ -55,6 +57,8 @@
 		DA0EF755DD5209C416812335 /* Pods_estimateTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_estimateTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED008CCB1D540EB3003D6662 /* Restaurant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
 		ED008CCD1D5413AB003D6662 /* Groceries.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Groceries.swift; sourceTree = "<group>"; };
+		ED008CCF1D5420C4003D6662 /* Transportation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transportation.swift; sourceTree = "<group>"; };
+		ED008CD11D542373003D6662 /* SportsAndLeisure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SportsAndLeisure.swift; sourceTree = "<group>"; };
 		ED07646C1D38004400314955 /* estimate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = estimate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED07646F1D38004400314955 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ED0764711D38004400314955 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -159,6 +163,7 @@
 				ED2FFE391D502565002450A5 /* DashboardViewController.swift */,
 				ED008CCB1D540EB3003D6662 /* Restaurant.swift */,
 				ED008CCD1D5413AB003D6662 /* Groceries.swift */,
+				ED008CCF1D5420C4003D6662 /* Transportation.swift */,
 				ED0764731D38004400314955 /* Main.storyboard */,
 				ED0764781D38004400314955 /* LaunchScreen.storyboard */,
 				ED9B48991D42B9B700693282 /* ListOfContries.json */,
@@ -167,6 +172,7 @@
 				ED2FFE461D51AB41002450A5 /* sports.png */,
 				ED2FFE471D51AB41002450A5 /* transportation.png */,
 				ED07647B1D38004400314955 /* Info.plist */,
+				ED008CD11D542373003D6662 /* SportsAndLeisure.swift */,
 			);
 			path = estimate;
 			sourceTree = "<group>";
@@ -455,12 +461,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED008CD21D542373003D6662 /* SportsAndLeisure.swift in Sources */,
 				ED008CCC1D540EB3003D6662 /* Restaurant.swift in Sources */,
 				ED0764721D38004400314955 /* ViewController.swift in Sources */,
 				ED3CD4B71D42BBF800CF1D10 /* Country.swift in Sources */,
 				ED008CCE1D5413AB003D6662 /* Groceries.swift in Sources */,
 				ED0764701D38004400314955 /* AppDelegate.swift in Sources */,
 				ED2FFE3A1D502565002450A5 /* DashboardViewController.swift in Sources */,
+				ED008CD01D5420C4003D6662 /* Transportation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
