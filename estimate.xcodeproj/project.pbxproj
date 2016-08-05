@@ -10,6 +10,8 @@
 		79AF8BD75C5DCFDDE22DB42D /* Pods_estimateUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AC6BCDE929CD229F8294CEC /* Pods_estimateUITests.framework */; };
 		7ADA13EC10901888A93591C5 /* Pods_estimate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB21F719B5F7B5F7DFB32A2F /* Pods_estimate.framework */; };
 		A76898F6F8808B6CE7BB8AE4 /* Pods_estimateTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA0EF755DD5209C416812335 /* Pods_estimateTests.framework */; };
+		ED008CCC1D540EB3003D6662 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED008CCB1D540EB3003D6662 /* Restaurant.swift */; };
+		ED008CCE1D5413AB003D6662 /* Groceries.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED008CCD1D5413AB003D6662 /* Groceries.swift */; };
 		ED0764701D38004400314955 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED07646F1D38004400314955 /* AppDelegate.swift */; };
 		ED0764721D38004400314955 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0764711D38004400314955 /* ViewController.swift */; };
 		ED0764751D38004400314955 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED0764731D38004400314955 /* Main.storyboard */; };
@@ -51,6 +53,8 @@
 		754B6812D7347E2EDC53E848 /* Pods-estimateTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-estimateTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-estimateTests/Pods-estimateTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D8365199E7F24D78E95CA2FC /* Pods-estimateTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-estimateTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-estimateTests/Pods-estimateTests.release.xcconfig"; sourceTree = "<group>"; };
 		DA0EF755DD5209C416812335 /* Pods_estimateTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_estimateTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED008CCB1D540EB3003D6662 /* Restaurant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
+		ED008CCD1D5413AB003D6662 /* Groceries.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Groceries.swift; sourceTree = "<group>"; };
 		ED07646C1D38004400314955 /* estimate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = estimate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED07646F1D38004400314955 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ED0764711D38004400314955 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -151,16 +155,18 @@
 			children = (
 				ED07646F1D38004400314955 /* AppDelegate.swift */,
 				ED0764711D38004400314955 /* ViewController.swift */,
+				ED3CD4B61D42BBF800CF1D10 /* Country.swift */,
+				ED2FFE391D502565002450A5 /* DashboardViewController.swift */,
+				ED008CCB1D540EB3003D6662 /* Restaurant.swift */,
+				ED008CCD1D5413AB003D6662 /* Groceries.swift */,
 				ED0764731D38004400314955 /* Main.storyboard */,
+				ED0764781D38004400314955 /* LaunchScreen.storyboard */,
+				ED9B48991D42B9B700693282 /* ListOfContries.json */,
 				ED2FFE441D51AB41002450A5 /* grocery.png */,
 				ED2FFE451D51AB41002450A5 /* restaurant.png */,
 				ED2FFE461D51AB41002450A5 /* sports.png */,
 				ED2FFE471D51AB41002450A5 /* transportation.png */,
-				ED0764781D38004400314955 /* LaunchScreen.storyboard */,
-				ED9B48991D42B9B700693282 /* ListOfContries.json */,
 				ED07647B1D38004400314955 /* Info.plist */,
-				ED3CD4B61D42BBF800CF1D10 /* Country.swift */,
-				ED2FFE391D502565002450A5 /* DashboardViewController.swift */,
 			);
 			path = estimate;
 			sourceTree = "<group>";
@@ -449,8 +455,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED008CCC1D540EB3003D6662 /* Restaurant.swift in Sources */,
 				ED0764721D38004400314955 /* ViewController.swift in Sources */,
 				ED3CD4B71D42BBF800CF1D10 /* Country.swift in Sources */,
+				ED008CCE1D5413AB003D6662 /* Groceries.swift in Sources */,
 				ED0764701D38004400314955 /* AppDelegate.swift in Sources */,
 				ED2FFE3A1D502565002450A5 /* DashboardViewController.swift in Sources */,
 			);

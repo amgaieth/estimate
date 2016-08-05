@@ -119,6 +119,7 @@ class ViewController: UIViewController  {
             task.resume()
 
         }
+        
     }
     
     func load(country1: String, city1: String, state1: String) {
@@ -193,8 +194,7 @@ extension ViewController: GMSAutocompleteResultsViewControllerDelegate {
         
         // separate the formattedAddress into city, state, country
         let seperatedformattedAddress =  place.formattedAddress!.componentsSeparatedByString(", ")
-//        print(seperatedformattedAddress)
-
+        print(place.placeID)
         // countries that use a state
         if seperatedformattedAddress.count == 3 {
             if seperatedformattedAddress[2] == "USA"    {
