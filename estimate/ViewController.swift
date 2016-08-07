@@ -11,7 +11,13 @@ import Foundation
 //import SwiftyJSON
 import GoogleMaps
 
+
 class ViewController: UIViewController  {
+    
+//    var dict = [String: String]()
+    
+    var priceAndProduct = [(String, String)]()
+    
     
     var resultsViewController: GMSAutocompleteResultsViewController?
     var searchController: UISearchController?
@@ -102,14 +108,12 @@ class ViewController: UIViewController  {
                     var price: String
                     // array that has two elements; the product and the price
                     var prodAndpriceArray = [String]()
-                    var dict = [String: String]()
                     
                     for i in productAndPriceArray.indices   {
                         prodAndpriceArray = productAndPriceArray[i].componentsSeparatedByString("  ")
                         product = prodAndpriceArray[0]
                         price = prodAndpriceArray[1]
-                        dict[product] = price
-                        print("\(product): \(price)")
+                        self.priceAndProduct.append((product, price))
                     }
                     
                     dispatch_async(dispatch_get_main_queue()) {
@@ -168,21 +172,25 @@ class ViewController: UIViewController  {
                     var price: String
                     // array that has two elements; the product and the price
                     var prodAndpriceArray = [String]()
-                    var dict = [String: String]()
                     
                     for i in productAndPriceArray.indices   {
                         prodAndpriceArray = productAndPriceArray[i].componentsSeparatedByString("  ")
                         product = prodAndpriceArray[0]
                         price = prodAndpriceArray[1]
-                        dict[product] = price
-                        print("\(product): \(price)")
+                        self.priceAndProduct.append((product, price))
                     }
-                
                     dispatch_async(dispatch_get_main_queue()) {
                     }
                 }
             }
             task.resume()
+        }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "toDashboard"    {
+            let dashboardViewController = segue.destinationViewController as! DashboardViewController
+            dashboardViewController.priceAndProduct = priceAndProduct
         }
     }
 }
@@ -194,7 +202,7 @@ extension ViewController: GMSAutocompleteResultsViewControllerDelegate {
         
         // separate the formattedAddress into city, state, country
         let seperatedformattedAddress =  place.formattedAddress!.componentsSeparatedByString(", ")
-        print(place.placeID)
+//        print(place.placeID)
         // countries that use a state
         if seperatedformattedAddress.count == 3 {
             if seperatedformattedAddress[2] == "USA"    {

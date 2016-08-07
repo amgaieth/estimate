@@ -21,7 +21,7 @@
                                 <rect key="frame" x="277" y="380" width="46" height="30"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
-                                    <segue destination="Sxq-jx-V4P" kind="show" animates="NO" id="8zw-az-s8a"/>
+                                    <segue destination="Sxq-jx-V4P" kind="show" identifier="toDashboard" animates="NO" id="8zw-az-s8a"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -47,7 +47,7 @@
         <!--Dashboard-->
         <scene sceneID="Crj-JD-qCT">
             <objects>
-                <tableViewController title="Dashboard" id="Sxq-jx-V4P" sceneMemberID="viewController">
+                <tableViewController title="Dashboard" id="Sxq-jx-V4P" customClass="DashboardViewController" customModule="estimate" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Aa2-4J-ce5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -86,7 +86,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="68i-lj-L9B" kind="show" animates="NO" id="ixS-3p-l17"/>
+                                            <segue destination="68i-lj-L9B" kind="show" identifier="toRestaurant" animates="NO" id="ixS-3p-l17"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="IV3-TH-Bh6" imageView="4bm-LR-doX" rowHeight="80" style="IBUITableViewCellStyleDefault" id="VSF-Yb-51J">
@@ -110,7 +110,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="wGw-Lb-lE0" kind="show" animates="NO" id="bkW-Xn-kgZ"/>
+                                            <segue destination="wGw-Lb-lE0" kind="show" identifier="toGroceries" animates="NO" id="bkW-Xn-kgZ"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="9aO-iP-Tgg" imageView="s7H-Vl-Tfq" rowHeight="80" style="IBUITableViewCellStyleDefault" id="ePf-ne-3Gi">
@@ -134,7 +134,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="EkR-RM-Saa" kind="show" animates="NO" id="SzL-ah-FPt"/>
+                                            <segue destination="EkR-RM-Saa" kind="show" identifier="toTransportation" animates="NO" id="SzL-ah-FPt"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="1D3-wT-k1T" imageView="q71-Zy-lQe" rowHeight="80" style="IBUITableViewCellStyleDefault" id="AS0-ci-vBO">
@@ -158,7 +158,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="WIb-jJ-d4A" kind="show" animates="NO" id="RiB-Ep-fJf"/>
+                                            <segue destination="WIb-jJ-d4A" kind="show" identifier="toSportsAndLeisure" animates="NO" id="RiB-Ep-fJf"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -178,7 +178,7 @@
         <!--Restaurants View Controller-->
         <scene sceneID="cWn-VM-JUu">
             <objects>
-                <tableViewController storyboardIdentifier="DashboardViewController" title="Restaurants View Controller" id="68i-lj-L9B" customClass="Restaurant" customModule="estimate" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="RestaurantsViewController" title="Restaurants View Controller" id="68i-lj-L9B" customClass="Restaurant" customModule="estimate" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="xN0-Sm-VbN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

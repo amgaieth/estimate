@@ -10,6 +10,10 @@ import UIKit
 
 class Restaurant: UITableViewController {
     
+//    var restaurantData: [String:String] = [:]
+    
+    var restaurantData = [(String, String)]()
+    
     @IBOutlet weak var product1Label: UILabel!
     @IBOutlet weak var product2Label: UILabel!
     @IBOutlet weak var product3Label: UILabel!
@@ -28,8 +32,12 @@ class Restaurant: UITableViewController {
     @IBOutlet weak var price7Label: UILabel!
     @IBOutlet weak var price8Label: UILabel!
     
-    
-    
-    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        for i in restaurantData.indices {
+            print(restaurantData[i])
+        }
+    }
     
 }

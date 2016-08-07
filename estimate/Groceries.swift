@@ -9,6 +9,9 @@
 import UIKit
 
 class Groceries: UITableViewController {
+    
+    var groceriesData = [(String, String)]()
+    
     @IBOutlet weak var product1Label: UILabel!
     @IBOutlet weak var product2Label: UILabel!
     @IBOutlet weak var product3Label: UILabel!
@@ -48,5 +51,13 @@ class Groceries: UITableViewController {
     @IBOutlet weak var price17Label: UILabel!
     @IBOutlet weak var price18Label: UILabel!
     @IBOutlet weak var price19Label: UILabel!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        for i in groceriesData.indices {
+            print(groceriesData[i])
+        }
+    }
     
 }

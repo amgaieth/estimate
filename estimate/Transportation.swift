@@ -9,6 +9,8 @@
 import UIKit
 
 class Transportation: UITableViewController {
+    
+    var transportationData = [(String, String)]()
 
     @IBOutlet weak var product1Label: UILabel!
     @IBOutlet weak var product2Label: UILabel!
@@ -27,5 +29,13 @@ class Transportation: UITableViewController {
     @IBOutlet weak var price6Label: UILabel!
     @IBOutlet weak var price7Label: UILabel!
     @IBOutlet weak var price8Label: UILabel!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        for i in transportationData.indices {
+            print(transportationData[i])
+        }
+    }
     
 }
