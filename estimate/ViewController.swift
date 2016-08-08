@@ -8,13 +8,15 @@
 
 import UIKit
 import Foundation
-//import SwiftyJSON
+import SwiftyJSON
 import GoogleMaps
 
 
 class ViewController: UIViewController  {
     
     var priceAndProduct = [(String, String)]()
+    
+    var first = String()
     
     var resultsViewController: GMSAutocompleteResultsViewController?
     var searchController: UISearchController?
@@ -189,7 +191,6 @@ class ViewController: UIViewController  {
                     let currencyArr = y[1].componentsSeparatedByString(" selected=\"selected\">")
                     
                     let currency = currencyArr[1].stringByReplacingOccurrencesOfString("</option>", withString: "")
-                    print(currency)
                     
                     var productAndPrice: String
                     var productAndPriceArray = [String]()
@@ -232,10 +233,60 @@ class ViewController: UIViewController  {
         }
     }
     
+    func getWeather(urlString: String)   {
+        
+        let url = NSURL(string: "http://" + urlString)
+        let task = NSURLSession.sharedSession().dataTaskWithURL(url!)   { (data, response, error) in
+            dispatch_async(dispatch_get_main_queue(),   {
+                if let error = error {
+                    print(error.localizedDescription)
+                }
+                if let data = data {
+                    self.setLabels(data)
+                }
+            })
+        }
+        task.resume()
+    }
+    
+    var temperature = String()
+    
+    func setLabels(weatherData: NSData) {
+       // var jsonError: NSError?
+
+       // let json = NSJSONSerialization.JSONObjectWithData(weatherData, options: nil, error: &jsonError) as! NSDictionary
+        
+        do  {
+           let json = try NSJSONSerialization.JSONObjectWithData(weatherData, options: .AllowFragments) as? NSDictionary
+            
+            if let name = json!["name"] as? String   {
+                first = name
+            }
+            
+            if let main = json!["main"] as? NSDictionary {
+                if var temp = main["temp"] as? Double   {
+                    temp = temp - 273.15
+                    temperature = String(format: "%.1f", temp)
+                    print(temperature)
+                }
+            }
+            
+            if let weather = json!["weather"] as? NSDictionary  {
+                if let description = weather[0]!["description"] as? String   {
+                    print(description)
+                }
+            }
+        }
+        catch (let error as NSError)   {
+            print(error.localizedDescription)
+        }
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "toDashboard"    {
             let dashboardViewController = segue.destinationViewController as! DashboardViewController
             dashboardViewController.priceAndProduct = priceAndProduct
+            dashboardViewController.city = first
         }
     }
 }
@@ -251,7 +302,7 @@ extension ViewController: GMSAutocompleteResultsViewControllerDelegate {
         // countries that use a state
         if seperatedformattedAddress.count == 3 {
             if seperatedformattedAddress[2] == "USA"    {
-                let first = seperatedformattedAddress[0]        // city
+                first = seperatedformattedAddress[0]        // city
                 let second = seperatedformattedAddress[1]       // state
                 let third = seperatedformattedAddress[2]        // country
                 // if input includes a space
@@ -260,12 +311,16 @@ extension ViewController: GMSAutocompleteResultsViewControllerDelegate {
                     let state = second.stringByReplacingOccurrencesOfString(" ", withString: "+")
                     let country = third.stringByReplacingOccurrencesOfString(" ", withString: "+")
                     load(country, city1: city, state1: state)
+                    getWeather("api.openweathermap.org/data/2.5/weather?q=\(city)&id=524901&APPID=581c938a5549bc5efafc393d7f18af9b")
+
                 }
                 else    {
                     let city = first
                     let state = second
                     let country = third
                     load(country, city1: city, state1: state)
+                    getWeather("api.openweathermap.org/data/2.5/weather?q=\(city)&id=524901&APPID=581c938a5549bc5efafc393d7f18af9b")
+
                 }
             }
             // numbeo does not show state names for other countries
@@ -278,11 +333,13 @@ extension ViewController: GMSAutocompleteResultsViewControllerDelegate {
                     let city =  first.stringByReplacingOccurrencesOfString(" ", withString: "+")
                     let country = third.stringByReplacingOccurrencesOfString(" ", withString: "+")
                     load(country, city1: city)
+                    getWeather("api.openweathermap.org/data/2.5/weather?q=\(city)&id=524901&APPID=581c938a5549bc5efafc393d7f18af9b")
                 }
                 else    {
                     let city = first
                     let country = third
                     load(country, city1: city)
+                    getWeather("api.openweathermap.org/data/2.5/weather?q=\(city)&id=524901&APPID=581c938a5549bc5efafc393d7f18af9b")
                 }
             }
         }
@@ -291,18 +348,14 @@ extension ViewController: GMSAutocompleteResultsViewControllerDelegate {
             let country = seperatedformattedAddress[1]
             
             load(country, city1: city)
+            getWeather("api.openweathermap.org/data/2.5/weather?q=\(city)&id=524901&APPID=581c938a5549bc5efafc393d7f18af9b")
         }
         else    {
             print("fix this")
         }
+        
     }
     
-//    func resultsController(resultsController: GMSAutocompleteResultsViewController, didSelectPrediction prediction: GMSAutocompletePrediction) -> Bool  {
-//        //performSegueWithIdentifier("viewControllerToTableView", sender: self)
-//        let controller = storyboard?.instantiateViewControllerWithIdentifier("DashboardViewController")
-//        self.presentViewController(controller!, animated: true, completion: nil)
-//        return true
-//        }
     
     func resultsController(resultsController: GMSAutocompleteResultsViewController,
                            didFailAutocompleteWithError error: NSError){

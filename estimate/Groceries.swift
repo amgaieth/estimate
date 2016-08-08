@@ -56,10 +56,6 @@ class Groceries: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        for i in groceriesData.indices  {
-            print("\(i): \(groceriesData[i])")
-        }
-        
         product1Label.text = groceriesData[0].0
         product2Label.text = groceriesData[1].0
         product3Label.text = groceriesData[2].0

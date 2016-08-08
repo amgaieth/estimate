@@ -9,6 +9,9 @@
 import UIKit
 
 class DashboardViewController: UITableViewController {
+    @IBOutlet weak var cityLabel: UILabel!
+    
+    var city = String()
     
     var priceAndProduct = [(String, String)]()
     var restaurantData = [(String, String)]()
@@ -23,6 +26,8 @@ class DashboardViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        cityLabel.text = city
         
         // Do any additional setup after loading the view.
         
