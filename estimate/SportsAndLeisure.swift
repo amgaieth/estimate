@@ -23,8 +23,14 @@ class SportsAndLeisure: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        for i in sportsAndLeisureData.indices {
-            print(sportsAndLeisureData[i])
-        }
+        product1Label.text = sportsAndLeisureData[0].0
+        product2Label.text = sportsAndLeisureData[1].0
+        product3Label.text = sportsAndLeisureData[2].0
+        
+        price1Label.text = sportsAndLeisureData[0].1
+        price2Label.text = sportsAndLeisureData[1].1
+        price3Label.text = sportsAndLeisureData[2].1
+
+        
     }
 }

@@ -33,9 +33,23 @@ class Transportation: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        for i in transportationData.indices {
-            print(transportationData[i])
-        }
+        product1Label.text = transportationData[0].0
+        product2Label.text = transportationData[1].0
+        product3Label.text = transportationData[2].0
+        product4Label.text = transportationData[3].0
+        product5Label.text = transportationData[4].0
+        product6Label.text = transportationData[5].0
+        product7Label.text = transportationData[6].0
+        product8Label.text = transportationData[7].0
+        
+        price1Label.text = transportationData[0].1
+        price2Label.text = transportationData[1].1
+        price3Label.text = transportationData[2].1
+        price4Label.text = transportationData[3].1
+        price5Label.text = transportationData[4].1
+        price6Label.text = transportationData[5].1
+        price7Label.text = transportationData[6].1
+        price8Label.text = transportationData[7].1
     }
     
 }

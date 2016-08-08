@@ -19,6 +19,9 @@
 		ED008CED1D54417C003D6662 /* GeoceryFinal.png in Resources */ = {isa = PBXBuildFile; fileRef = ED008CEC1D54417C003D6662 /* GeoceryFinal.png */; };
 		ED008CEF1D5445EE003D6662 /* Transportation.png in Resources */ = {isa = PBXBuildFile; fileRef = ED008CEE1D5445EE003D6662 /* Transportation.png */; };
 		ED008CF71D553569003D6662 /* Sports.png in Resources */ = {isa = PBXBuildFile; fileRef = ED008CF61D553569003D6662 /* Sports.png */; };
+		ED008CF91D56E79E003D6662 /* Currrency.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED008CF81D56E79E003D6662 /* Currrency.swift */; };
+		ED008CFB1D56EA0B003D6662 /* Common-Currency.json in Resources */ = {isa = PBXBuildFile; fileRef = ED008CFA1D56EA0B003D6662 /* Common-Currency.json */; };
+		ED008CFD1D56EAE0003D6662 /* ListOfContries.json in Resources */ = {isa = PBXBuildFile; fileRef = ED008CFC1D56EAE0003D6662 /* ListOfContries.json */; };
 		ED0764701D38004400314955 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED07646F1D38004400314955 /* AppDelegate.swift */; };
 		ED0764721D38004400314955 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0764711D38004400314955 /* ViewController.swift */; };
 		ED0764751D38004400314955 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED0764731D38004400314955 /* Main.storyboard */; };
@@ -26,7 +29,6 @@
 		ED0764851D38004500314955 /* estimateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0764841D38004500314955 /* estimateTests.swift */; };
 		ED0764901D38004500314955 /* estimateUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED07648F1D38004500314955 /* estimateUITests.swift */; };
 		ED2FFE3A1D502565002450A5 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2FFE391D502565002450A5 /* DashboardViewController.swift */; };
-		ED9B489A1D42B9B700693282 /* ListOfContries.json in Resources */ = {isa = PBXBuildFile; fileRef = ED9B48991D42B9B700693282 /* ListOfContries.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +66,9 @@
 		ED008CEC1D54417C003D6662 /* GeoceryFinal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GeoceryFinal.png; sourceTree = "<group>"; };
 		ED008CEE1D5445EE003D6662 /* Transportation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Transportation.png; sourceTree = "<group>"; };
 		ED008CF61D553569003D6662 /* Sports.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Sports.png; sourceTree = "<group>"; };
+		ED008CF81D56E79E003D6662 /* Currrency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Currrency.swift; sourceTree = "<group>"; };
+		ED008CFA1D56EA0B003D6662 /* Common-Currency.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Common-Currency.json"; sourceTree = "<group>"; };
+		ED008CFC1D56EAE0003D6662 /* ListOfContries.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ListOfContries.json; sourceTree = "<group>"; };
 		ED07646C1D38004400314955 /* estimate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = estimate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED07646F1D38004400314955 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ED0764711D38004400314955 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -77,7 +82,6 @@
 		ED07648F1D38004500314955 /* estimateUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = estimateUITests.swift; sourceTree = "<group>"; };
 		ED0764911D38004500314955 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ED2FFE391D502565002450A5 /* DashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
-		ED9B48991D42B9B700693282 /* ListOfContries.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ListOfContries.json; sourceTree = "<group>"; };
 		FB21F719B5F7B5F7DFB32A2F /* Pods_estimate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_estimate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -157,6 +161,8 @@
 		ED07646E1D38004400314955 /* estimate */ = {
 			isa = PBXGroup;
 			children = (
+				ED008CFC1D56EAE0003D6662 /* ListOfContries.json */,
+				ED008CFA1D56EA0B003D6662 /* Common-Currency.json */,
 				ED07646F1D38004400314955 /* AppDelegate.swift */,
 				ED0764711D38004400314955 /* ViewController.swift */,
 				ED2FFE391D502565002450A5 /* DashboardViewController.swift */,
@@ -164,6 +170,7 @@
 				ED008CCD1D5413AB003D6662 /* Groceries.swift */,
 				ED008CCF1D5420C4003D6662 /* Transportation.swift */,
 				ED008CD11D542373003D6662 /* SportsAndLeisure.swift */,
+				ED008CF81D56E79E003D6662 /* Currrency.swift */,
 				ED0764731D38004400314955 /* Main.storyboard */,
 				ED008CD31D542C99003D6662 /* Background.JPG */,
 				ED008CD41D542C99003D6662 /* Eat.png */,
@@ -171,7 +178,6 @@
 				ED008CEC1D54417C003D6662 /* GeoceryFinal.png */,
 				ED008CEE1D5445EE003D6662 /* Transportation.png */,
 				ED0764781D38004400314955 /* LaunchScreen.storyboard */,
-				ED9B48991D42B9B700693282 /* ListOfContries.json */,
 				ED07647B1D38004400314955 /* Info.plist */,
 			);
 			path = estimate;
@@ -312,9 +318,10 @@
 				ED07647A1D38004400314955 /* LaunchScreen.storyboard in Resources */,
 				ED008CD51D542C99003D6662 /* Background.JPG in Resources */,
 				ED008CEF1D5445EE003D6662 /* Transportation.png in Resources */,
+				ED008CFD1D56EAE0003D6662 /* ListOfContries.json in Resources */,
+				ED008CFB1D56EA0B003D6662 /* Common-Currency.json in Resources */,
 				ED008CF71D553569003D6662 /* Sports.png in Resources */,
 				ED0764751D38004400314955 /* Main.storyboard in Resources */,
-				ED9B489A1D42B9B700693282 /* ListOfContries.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -469,6 +476,7 @@
 				ED0764701D38004400314955 /* AppDelegate.swift in Sources */,
 				ED2FFE3A1D502565002450A5 /* DashboardViewController.swift in Sources */,
 				ED008CD01D5420C4003D6662 /* Transportation.swift in Sources */,
+				ED008CF91D56E79E003D6662 /* Currrency.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

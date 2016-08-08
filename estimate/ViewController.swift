@@ -14,10 +14,7 @@ import GoogleMaps
 
 class ViewController: UIViewController  {
     
-//    var dict = [String: String]()
-    
     var priceAndProduct = [(String, String)]()
-    
     
     var resultsViewController: GMSAutocompleteResultsViewController?
     var searchController: UISearchController?
@@ -85,6 +82,27 @@ class ViewController: UIViewController  {
                         }
                     }
                     
+                    var x = [String]()
+                    var y = [String]()
+                    
+                    for i in lines!.indices {
+                        if lines![i].containsString("<option value")    {
+                            x.append(lines![i])
+                        }
+                    }
+                    
+                    for i in x.indices  {
+                        if x[i].containsString("selected=\"selected\">")    {
+                            y.append(x[i])
+                        }
+                        
+                    }
+                    
+                    
+                    let currencyArr = y[1].componentsSeparatedByString(" selected=\"selected\">")
+                    
+                    let currency = currencyArr[1].stringByReplacingOccurrencesOfString("</option>", withString: "")
+                    
                     var productAndPrice: String
                     var productAndPriceArray = [String]()
                     
@@ -113,9 +131,11 @@ class ViewController: UIViewController  {
                         prodAndpriceArray = productAndPriceArray[i].componentsSeparatedByString("  ")
                         product = prodAndpriceArray[0]
                         price = prodAndpriceArray[1]
+                        let priceArray = price.componentsSeparatedByString("&")
+                        price = priceArray[0] + " " + currency
                         self.priceAndProduct.append((product, price))
+
                     }
-                    
                     dispatch_async(dispatch_get_main_queue()) {
                     }
                 }
@@ -149,7 +169,28 @@ class ViewController: UIViewController  {
                             filteredArrayOfProducts.append(filteredArray[i])
                         }
                     }
-
+                    
+                    var x = [String]()
+                    var y = [String]()
+                    
+                    for i in lines!.indices {
+                        if lines![i].containsString("<option value")    {
+                            x.append(lines![i])
+                        }
+                    }
+                    
+                    for i in x.indices  {
+                        if x[i].containsString("selected=\"selected\">")    {
+                            y.append(x[i])
+                        }
+                    
+                    }
+                    
+                    let currencyArr = y[1].componentsSeparatedByString(" selected=\"selected\">")
+                    
+                    let currency = currencyArr[1].stringByReplacingOccurrencesOfString("</option>", withString: "")
+                    print(currency)
+                    
                     var productAndPrice: String
                     var productAndPriceArray = [String]()
                     
@@ -177,10 +218,14 @@ class ViewController: UIViewController  {
                         prodAndpriceArray = productAndPriceArray[i].componentsSeparatedByString("  ")
                         product = prodAndpriceArray[0]
                         price = prodAndpriceArray[1]
+                        let priceArray = price.componentsSeparatedByString("&")
+                        price = priceArray[0] + " " + currency
                         self.priceAndProduct.append((product, price))
                     }
                     dispatch_async(dispatch_get_main_queue()) {
                     }
+                    
+                    
                 }
             }
             task.resume()
