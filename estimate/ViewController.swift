@@ -39,7 +39,7 @@ class ViewController: UIViewController  {
         searchController = UISearchController(searchResultsController: resultsViewController)
         searchController?.searchResultsUpdater = resultsViewController
         
-        let subView = UIView(frame: CGRectMake(0, 65.0, 350.0, 45.0))
+        let subView = UIView(frame: CGRectMake(0, 333.5, 375.0, 45.0))
         
         subView.addSubview((searchController?.searchBar)!)
         self.view.addSubview(subView)
@@ -281,6 +281,9 @@ class ViewController: UIViewController  {
         }
     }
     
+    func getTime()  {
+        
+    }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "toDashboard"    {

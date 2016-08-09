@@ -28,6 +28,7 @@ class DashboardViewController: UITableViewController {
     
     @IBOutlet weak var weatherDescriptionLabel: UILabel!
     @IBOutlet weak var temperatureLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,6 +69,13 @@ class DashboardViewController: UITableViewController {
                 salariesData.append(priceAndProduct[i])
             }
         }
+        
+        
+        NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: Selector("updateTime"), userInfo: nil, repeats: true)
+    }
+    
+    func updateTime()   {
+        timeLabel.text = NSDateFormatter.localizedStringFromDate(NSDate(), dateStyle: NSDateFormatterStyle.MediumStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
     }
     
     override func didReceiveMemoryWarning() {

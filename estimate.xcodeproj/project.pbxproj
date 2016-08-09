@@ -30,6 +30,7 @@
 		ED0764851D38004500314955 /* estimateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0764841D38004500314955 /* estimateTests.swift */; };
 		ED0764901D38004500314955 /* estimateUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED07648F1D38004500314955 /* estimateUITests.swift */; };
 		ED2FFE3A1D502565002450A5 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2FFE391D502565002450A5 /* DashboardViewController.swift */; };
+		ED4A56CB1D59D8E6004820E4 /* clock.png in Resources */ = {isa = PBXBuildFile; fileRef = ED4A56CA1D59D8E6004820E4 /* clock.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +85,7 @@
 		ED07648F1D38004500314955 /* estimateUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = estimateUITests.swift; sourceTree = "<group>"; };
 		ED0764911D38004500314955 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ED2FFE391D502565002450A5 /* DashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
+		ED4A56CA1D59D8E6004820E4 /* clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clock.png; sourceTree = "<group>"; };
 		FB21F719B5F7B5F7DFB32A2F /* Pods_estimate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_estimate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -163,6 +165,7 @@
 		ED07646E1D38004400314955 /* estimate */ = {
 			isa = PBXGroup;
 			children = (
+				ED4A56CA1D59D8E6004820E4 /* clock.png */,
 				ED008CFC1D56EAE0003D6662 /* ListOfContries.json */,
 				ED008CFA1D56EA0B003D6662 /* Common-Currency.json */,
 				ED07646F1D38004400314955 /* AppDelegate.swift */,
@@ -323,6 +326,7 @@
 				ED008CD51D542C99003D6662 /* Background.JPG in Resources */,
 				ED008CEF1D5445EE003D6662 /* Transportation.png in Resources */,
 				ED008CFD1D56EAE0003D6662 /* ListOfContries.json in Resources */,
+				ED4A56CB1D59D8E6004820E4 /* clock.png in Resources */,
 				ED008CFB1D56EA0B003D6662 /* Common-Currency.json in Resources */,
 				ED008CF71D553569003D6662 /* Sports.png in Resources */,
 				ED0764751D38004400314955 /* Main.storyboard in Resources */,
