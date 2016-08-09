@@ -73,8 +73,36 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="Nt5-dh-7VM" imageView="hhe-W1-5kC" rowHeight="80" style="IBUITableViewCellStyleDefault" id="lO8-rh-CKY">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="Kzc-TV-5U9" detailTextLabel="9Ag-Ib-wZh" imageView="hHT-OA-c7e" rowHeight="80" style="IBUITableViewCellStyleValue1" id="jaI-b2-De6">
                                         <rect key="frame" x="0.0" y="80" width="375" height="80"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jaI-b2-De6" id="2Zd-BL-f0F">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="weatherDescriptionLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Kzc-TV-5U9">
+                                                    <rect key="frame" x="110" y="30" width="181" height="19.5"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="weather.png" id="hHT-OA-c7e">
+                                                    <rect key="frame" x="15" y="0.0" width="80" height="79.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </imageView>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="temperatureLabel" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9Ag-Ib-wZh">
+                                                    <rect key="frame" x="297" y="30" width="63" height="19.5"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="Nt5-dh-7VM" imageView="hhe-W1-5kC" rowHeight="80" style="IBUITableViewCellStyleDefault" id="lO8-rh-CKY">
+                                        <rect key="frame" x="0.0" y="160" width="375" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lO8-rh-CKY" id="6Xx-mB-nb4">
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="79.5"/>
@@ -98,7 +126,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="IV3-TH-Bh6" imageView="4bm-LR-doX" rowHeight="80" style="IBUITableViewCellStyleDefault" id="VSF-Yb-51J">
-                                        <rect key="frame" x="0.0" y="160" width="375" height="80"/>
+                                        <rect key="frame" x="0.0" y="240" width="375" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VSF-Yb-51J" id="f8R-ab-Ut2">
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="79.5"/>
@@ -122,7 +150,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="9aO-iP-Tgg" imageView="s7H-Vl-Tfq" rowHeight="80" style="IBUITableViewCellStyleDefault" id="ePf-ne-3Gi">
-                                        <rect key="frame" x="0.0" y="240" width="375" height="80"/>
+                                        <rect key="frame" x="0.0" y="320" width="375" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ePf-ne-3Gi" id="IE7-0M-ZMB">
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="79.5"/>
@@ -146,7 +174,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="1D3-wT-k1T" imageView="q71-Zy-lQe" rowHeight="80" style="IBUITableViewCellStyleDefault" id="AS0-ci-vBO">
-                                        <rect key="frame" x="0.0" y="320" width="375" height="80"/>
+                                        <rect key="frame" x="0.0" y="400" width="375" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AS0-ci-vBO" id="fyr-cf-Mx9">
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="79.5"/>
@@ -180,6 +208,8 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="cityLabel" destination="sot-71-Zc7" id="AvV-Ed-pAL"/>
+                        <outlet property="temperatureLabel" destination="9Ag-Ib-wZh" id="neE-LV-XgP"/>
+                        <outlet property="weatherDescriptionLabel" destination="Kzc-TV-5U9" id="qSg-P0-ed6"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ylV-Om-xmq" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -425,6 +455,8 @@
                             <outlet property="delegate" destination="68i-lj-L9B" id="Hx8-Sg-2BL"/>
                         </connections>
                     </tableView>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="price1Label" destination="zQB-PM-46v" id="HwZ-Ie-k5n"/>
@@ -1405,5 +1437,6 @@
         <image name="GeoceryFinal.png" width="114" height="114"/>
         <image name="Sports.png" width="114" height="114"/>
         <image name="Transportation.png" width="114" height="114"/>
+        <image name="weather.png" width="114" height="114"/>
     </resources>
 </document>

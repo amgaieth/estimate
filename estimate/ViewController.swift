@@ -250,11 +250,9 @@ class ViewController: UIViewController  {
     }
     
     var temperature = String()
+    var descript = String()
     
     func setLabels(weatherData: NSData) {
-       // var jsonError: NSError?
-
-       // let json = NSJSONSerialization.JSONObjectWithData(weatherData, options: nil, error: &jsonError) as! NSDictionary
         
         do  {
            let json = try NSJSONSerialization.JSONObjectWithData(weatherData, options: .AllowFragments) as? NSDictionary
@@ -266,14 +264,15 @@ class ViewController: UIViewController  {
             if let main = json!["main"] as? NSDictionary {
                 if var temp = main["temp"] as? Double   {
                     temp = temp - 273.15
+                    temp = (temp * 9.0)/5.0 + 32
                     temperature = String(format: "%.1f", temp)
-                    print(temperature)
+                    temperature = temperature + "ºF"
                 }
             }
             
-            if let weather = json!["weather"] as? NSDictionary  {
-                if let description = weather[0]!["description"] as? String   {
-                    print(description)
+            if let weather = json!["weather"] as? NSArray  {
+                if let description = weather[0]["description"] as? String   {
+                    descript = description
                 }
             }
         }
@@ -282,11 +281,14 @@ class ViewController: UIViewController  {
         }
     }
     
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "toDashboard"    {
             let dashboardViewController = segue.destinationViewController as! DashboardViewController
             dashboardViewController.priceAndProduct = priceAndProduct
             dashboardViewController.city = first
+            dashboardViewController.temperature = temperature
+            dashboardViewController.descript = descript
         }
     }
 }
@@ -298,7 +300,6 @@ extension ViewController: GMSAutocompleteResultsViewControllerDelegate {
         
         // separate the formattedAddress into city, state, country
         let seperatedformattedAddress =  place.formattedAddress!.componentsSeparatedByString(", ")
-//        print(place.placeID)
         // countries that use a state
         if seperatedformattedAddress.count == 3 {
             if seperatedformattedAddress[2] == "USA"    {

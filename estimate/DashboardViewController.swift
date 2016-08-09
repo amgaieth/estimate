@@ -12,6 +12,8 @@ class DashboardViewController: UITableViewController {
     @IBOutlet weak var cityLabel: UILabel!
     
     var city = String()
+    var temperature = String()
+    var descript = String()
     
     var priceAndProduct = [(String, String)]()
     var restaurantData = [(String, String)]()
@@ -24,10 +26,16 @@ class DashboardViewController: UITableViewController {
     var buyApartmentData = [(String, String)]()
     var salariesData = [(String, String)]()
     
+    @IBOutlet weak var weatherDescriptionLabel: UILabel!
+    @IBOutlet weak var temperatureLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         cityLabel.text = city
+        weatherDescriptionLabel.text = descript
+        temperatureLabel.text = temperature
+        
         
         // Do any additional setup after loading the view.
         

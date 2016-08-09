@@ -22,6 +22,7 @@
 		ED008CF91D56E79E003D6662 /* Currrency.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED008CF81D56E79E003D6662 /* Currrency.swift */; };
 		ED008CFB1D56EA0B003D6662 /* Common-Currency.json in Resources */ = {isa = PBXBuildFile; fileRef = ED008CFA1D56EA0B003D6662 /* Common-Currency.json */; };
 		ED008CFD1D56EAE0003D6662 /* ListOfContries.json in Resources */ = {isa = PBXBuildFile; fileRef = ED008CFC1D56EAE0003D6662 /* ListOfContries.json */; };
+		ED008CFF1D59525B003D6662 /* weather.png in Resources */ = {isa = PBXBuildFile; fileRef = ED008CFE1D59525B003D6662 /* weather.png */; };
 		ED0764701D38004400314955 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED07646F1D38004400314955 /* AppDelegate.swift */; };
 		ED0764721D38004400314955 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0764711D38004400314955 /* ViewController.swift */; };
 		ED0764751D38004400314955 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED0764731D38004400314955 /* Main.storyboard */; };
@@ -69,6 +70,7 @@
 		ED008CF81D56E79E003D6662 /* Currrency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Currrency.swift; sourceTree = "<group>"; };
 		ED008CFA1D56EA0B003D6662 /* Common-Currency.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Common-Currency.json"; sourceTree = "<group>"; };
 		ED008CFC1D56EAE0003D6662 /* ListOfContries.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ListOfContries.json; sourceTree = "<group>"; };
+		ED008CFE1D59525B003D6662 /* weather.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = weather.png; sourceTree = "<group>"; };
 		ED07646C1D38004400314955 /* estimate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = estimate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED07646F1D38004400314955 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ED0764711D38004400314955 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 				ED008CD11D542373003D6662 /* SportsAndLeisure.swift */,
 				ED008CF81D56E79E003D6662 /* Currrency.swift */,
 				ED0764731D38004400314955 /* Main.storyboard */,
+				ED008CFE1D59525B003D6662 /* weather.png */,
 				ED008CD31D542C99003D6662 /* Background.JPG */,
 				ED008CD41D542C99003D6662 /* Eat.png */,
 				ED008CF61D553569003D6662 /* Sports.png */,
@@ -313,6 +316,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED008CFF1D59525B003D6662 /* weather.png in Resources */,
 				ED008CED1D54417C003D6662 /* GeoceryFinal.png in Resources */,
 				ED008CD61D542C99003D6662 /* Eat.png in Resources */,
 				ED07647A1D38004400314955 /* LaunchScreen.storyboard in Resources */,
