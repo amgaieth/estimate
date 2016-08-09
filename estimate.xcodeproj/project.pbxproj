@@ -31,6 +31,7 @@
 		ED0764901D38004500314955 /* estimateUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED07648F1D38004500314955 /* estimateUITests.swift */; };
 		ED2FFE3A1D502565002450A5 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2FFE391D502565002450A5 /* DashboardViewController.swift */; };
 		ED4A56CB1D59D8E6004820E4 /* clock.png in Resources */ = {isa = PBXBuildFile; fileRef = ED4A56CA1D59D8E6004820E4 /* clock.png */; };
+		ED4A56CD1D5A86C7004820E4 /* SearchResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4A56CC1D5A86C7004820E4 /* SearchResultsController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +87,7 @@
 		ED0764911D38004500314955 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ED2FFE391D502565002450A5 /* DashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		ED4A56CA1D59D8E6004820E4 /* clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clock.png; sourceTree = "<group>"; };
+		ED4A56CC1D5A86C7004820E4 /* SearchResultsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsController.swift; sourceTree = "<group>"; };
 		FB21F719B5F7B5F7DFB32A2F /* Pods_estimate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_estimate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -171,6 +173,7 @@
 				ED07646F1D38004400314955 /* AppDelegate.swift */,
 				ED0764711D38004400314955 /* ViewController.swift */,
 				ED2FFE391D502565002450A5 /* DashboardViewController.swift */,
+				ED4A56CC1D5A86C7004820E4 /* SearchResultsController.swift */,
 				ED008CCB1D540EB3003D6662 /* Restaurant.swift */,
 				ED008CCD1D5413AB003D6662 /* Groceries.swift */,
 				ED008CCF1D5420C4003D6662 /* Transportation.swift */,
@@ -481,6 +484,7 @@
 				ED008CCC1D540EB3003D6662 /* Restaurant.swift in Sources */,
 				ED0764721D38004400314955 /* ViewController.swift in Sources */,
 				ED008CCE1D5413AB003D6662 /* Groceries.swift in Sources */,
+				ED4A56CD1D5A86C7004820E4 /* SearchResultsController.swift in Sources */,
 				ED0764701D38004400314955 /* AppDelegate.swift in Sources */,
 				ED2FFE3A1D502565002450A5 /* DashboardViewController.swift in Sources */,
 				ED008CD01D5420C4003D6662 /* Transportation.swift in Sources */,

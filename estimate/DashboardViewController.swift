@@ -7,9 +7,17 @@
 //
 
 import UIKit
+import GoogleMaps
 
-class DashboardViewController: UITableViewController {
+class DashboardViewController: UITableViewController, UISearchBarDelegate {
+    
     @IBOutlet weak var cityLabel: UILabel!
+    
+    var searchResultController: SearchResultsController!
+    var resultsArray = [String]()
+    
+    var resultsViewController: GMSAutocompleteResultsViewController?
+    var searchController: UISearchController?
     
     var city = String()
     var temperature = String()
@@ -37,9 +45,7 @@ class DashboardViewController: UITableViewController {
         weatherDescriptionLabel.text = descript
         temperatureLabel.text = temperature
         
-        
-        // Do any additional setup after loading the view.
-        
+        // create different array for the different categories
         for i in priceAndProduct.indices    {
             if i < 8    {
                 restaurantData.append(priceAndProduct[i])
@@ -69,8 +75,6 @@ class DashboardViewController: UITableViewController {
                 salariesData.append(priceAndProduct[i])
             }
         }
-        
-        
         NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: Selector("updateTime"), userInfo: nil, repeats: true)
     }
     
@@ -81,6 +85,39 @@ class DashboardViewController: UITableViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        searchResultController = SearchResultsController()
+//        searchResultController.delegate = self
+    }
+    
+    @IBAction func searchWithAdress(sender: AnyObject) {
+        let searchController = UISearchController(searchResultsController: searchResultController)
+        searchController.searchBar.delegate = self
+        self.presentViewController(searchController, animated: true, completion: nil)
+    }
+    
+    
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        let placeClient = GMSPlacesClient()
+        placeClient.autocompleteQuery(searchText, bounds: nil, filter: nil) { (results, error: NSError?) -> Void in
+            
+            self.resultsArray.removeAll()
+            if results == nil {
+                return
+            }
+            
+            for result in results! {
+                if let result = result as? GMSAutocompletePrediction {
+                    self.resultsArray.append(result.attributedFullText.string)
+                }
+            }
+            
+            self.searchResultController.reloadDataWithArray(self.resultsArray)
+            
+        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -105,6 +142,4 @@ class DashboardViewController: UITableViewController {
     func unwindSelectProblem(segue: UIStoryboardSegue)   {
         
     }
-    
-    
 }

@@ -20,9 +20,6 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6sJ-yQ-ZkI">
                                 <rect key="frame" x="223" y="509" width="46" height="30"/>
                                 <state key="normal" title="Button"/>
-                                <connections>
-                                    <segue destination="Sxq-jx-V4P" kind="show" identifier="toDashboard" animates="NO" id="8zw-az-s8a"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -43,7 +40,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="-964.5" y="177.5"/>
+            <point key="canvasLocation" x="-874.5" y="805.5"/>
         </scene>
         <!--Dashboard-->
         <scene sceneID="Crj-JD-qCT">
@@ -227,7 +224,13 @@
                             <outlet property="delegate" destination="Sxq-jx-V4P" id="5Ng-RG-Acz"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Dashboard" id="dLB-zk-SsG"/>
+                    <navigationItem key="navigationItem" title="Dashboard" id="dLB-zk-SsG">
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="a0R-70-bV6">
+                            <connections>
+                                <action selector="searchWithAdress:" destination="Sxq-jx-V4P" id="sCJ-cm-lsH"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="cityLabel" destination="sot-71-Zc7" id="AvV-Ed-pAL"/>
@@ -250,7 +253,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="gaY-lK-lpT"/>
+                        <segue destination="Sxq-jx-V4P" kind="relationship" relationship="rootViewController" id="Fer-8e-nuX"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="299-Fa-95x" userLabel="First Responder" sceneMemberID="firstResponder"/>
