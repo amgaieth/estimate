@@ -289,6 +289,7 @@ class ViewController: UIViewController  {
             dashboardViewController.city = first
             dashboardViewController.temperature = temperature
             dashboardViewController.descript = descript
+            print(NSDate())
         }
     }
 }

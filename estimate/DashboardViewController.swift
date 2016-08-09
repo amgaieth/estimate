@@ -46,7 +46,7 @@ class DashboardViewController: UITableViewController {
             else if i < 27 && i > 7 {
                 groceriesData.append(priceAndProduct[i])
             }
-            else if i < 34 && i > 26    {
+            else if i < 35 && i > 26    {
                 transportationData.append(priceAndProduct[i])
             }
             else if i < 38 && i > 34    {
@@ -92,6 +92,10 @@ class DashboardViewController: UITableViewController {
             let sportsAndLeisureViewController = segue.destinationViewController as! SportsAndLeisure
             sportsAndLeisureViewController.sportsAndLeisureData = sportsAndLeisureData
         }
+    }
+    
+    func unwindSelectProblem(segue: UIStoryboardSegue)   {
+        
     }
     
     
