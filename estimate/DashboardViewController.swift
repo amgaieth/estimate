@@ -37,6 +37,16 @@ class DashboardViewController: UITableViewController, UISearchBarDelegate {
     var buyApartmentData = [(String, String)]()
     var salariesData = [(String, String)]()
     
+    var restaurantArr = [(String, String)]()
+    var groceriesArr = [(String, String)]()
+    var transportationArr = [(String, String)]()
+    var utilitiesArr = [(String, String)]()
+    var sportsAndLeisureArr = [(String, String)]()
+    var clothingArr = [(String, String)]()
+    var rentArr = [(String, String)]()
+    var buyApartmentsArr = [(String, String)]()
+    var salariesArr = [(String, String)]()
+    
     @IBOutlet weak var weatherDescriptionLabel: UILabel!
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
@@ -84,7 +94,7 @@ class DashboardViewController: UITableViewController, UISearchBarDelegate {
     }
     
     func load(country1: String, city1: String) {
-        
+
         let attemptedUrl = NSURL(string: "http://www.numbeo.com/cost-of-living/city_result.jsp?country=\(country1)&city=\(city1)")
         
         if let url = attemptedUrl   {
@@ -162,54 +172,73 @@ class DashboardViewController: UITableViewController, UISearchBarDelegate {
                     }
                     
                     
+                    for i in self.priceAndProduct.indices    {
+                        if i < 8    {
+                            self.restaurantData.append(self.priceAndProduct[i])
+                        }
+                        else if i < 27 && i > 7 {
+                            self.groceriesData.append(self.priceAndProduct[i])
+                        }
+                        else if i < 35 && i > 26    {
+                            self.transportationData.append(self.priceAndProduct[i])
+                        }
+                        else if i < 38 && i > 34    {
+                            self.utilitiesData.append(self.priceAndProduct[i])
+                        }
+                        else if i < 41 && i > 37    {
+                            self.sportsAndLeisureData.append(self.priceAndProduct[i])
+                        }
+                        else if i < 45 && i > 40    {
+                            self.clothingData.append(self.priceAndProduct[i])
+                        }
+                        else if i < 49 && i > 44    {
+                            self.rentData.append(self.priceAndProduct[i])
+                        }
+                        else if i < 51 && i > 48    {
+                            self.buyApartmentData.append(self.priceAndProduct[i])
+                        }
+                        else if i < 53 && i > 50    {
+                            self.salariesData.append(self.priceAndProduct[i])
+                        }
+                    }
+                    
+                    self.restaurantArr = self.restaurantData
+                    self.groceriesArr = self.groceriesData
+                    self.transportationArr = self.transportationData
+                    self.utilitiesArr = self.utilitiesData
+                    self.sportsAndLeisureArr = self.sportsAndLeisureData
+                    self.clothingArr = self.clothingData
+                    self.rentArr = self.rentData
+                    self.buyApartmentsArr = self.buyApartmentData
+                    self.salariesArr = self.salariesData
+                    
                     dispatch_async(dispatch_get_main_queue()) {
                         
                         self.cityLabel.text = self.first
                         self.weatherDescriptionLabel.text = self.descript
                         self.temperatureLabel.text = self.temperature
                         
-                        for i in self.priceAndProduct.indices    {
-                            if i < 8    {
-                                self.restaurantData.append(self.priceAndProduct[i])
-                            }
-                            else if i < 27 && i > 7 {
-                                self.groceriesData.append(self.priceAndProduct[i])
-                            }
-                            else if i < 35 && i > 26    {
-                                self.transportationData.append(self.priceAndProduct[i])
-                            }
-                            else if i < 38 && i > 34    {
-                                self.utilitiesData.append(self.priceAndProduct[i])
-                            }
-                            else if i < 41 && i > 37    {
-                                self.sportsAndLeisureData.append(self.priceAndProduct[i])
-                            }
-                            else if i < 45 && i > 40    {
-                                self.clothingData.append(self.priceAndProduct[i])
-                            }
-                            else if i < 49 && i > 44    {
-                                self.rentData.append(self.priceAndProduct[i])
-                            }
-                            else if i < 51 && i > 48    {
-                                self.buyApartmentData.append(self.priceAndProduct[i])
-                            }
-                            else if i < 53 && i > 50    {
-                                self.salariesData.append(self.priceAndProduct[i])
-                            }
-                        }
-                        
+                        print("city: \(self.first)")
+                        print("descript: \(self.descript)")
+                        print("temperature: \(self.temperature)")
                     }
-
+                    self.priceAndProduct.removeAll()
+                    self.restaurantData.removeAll()
+                    self.groceriesData.removeAll()
+                    self.transportationData.removeAll()
+                    self.utilitiesData.removeAll()
+                    self.sportsAndLeisureData.removeAll()
+                    self.clothingData.removeAll()
+                    self.rentData.removeAll()
+                    self.buyApartmentData.removeAll()
+                    self.salariesData.removeAll()
                 }
             }
             task.resume()
-            
         }
-        
     }
     
     func load(country1: String, city1: String, state1: String) {
-        
         let attemptedUrl = NSURL(string: "http://www.numbeo.com/cost-of-living/city_result.jsp?country=\(country1)&city=\(city1)%2C+\(state1)")
         
         if let url = attemptedUrl   {
@@ -284,43 +313,66 @@ class DashboardViewController: UITableViewController, UISearchBarDelegate {
                         self.priceAndProduct.append((product, price))
                     }
                     
+                    for i in self.priceAndProduct.indices    {
+                        if i < 8    {
+                            self.restaurantData.append(self.priceAndProduct[i])
+                        }
+                        else if i < 27 && i > 7 {
+                            self.groceriesData.append(self.priceAndProduct[i])
+                        }
+                        else if i < 35 && i > 26    {
+                            self.transportationData.append(self.priceAndProduct[i])
+                        }
+                        else if i < 38 && i > 34    {
+                            self.utilitiesData.append(self.priceAndProduct[i])
+                        }
+                        else if i < 41 && i > 37    {
+                            self.sportsAndLeisureData.append(self.priceAndProduct[i])
+                        }
+                        else if i < 45 && i > 40    {
+                            self.clothingData.append(self.priceAndProduct[i])
+                        }
+                        else if i < 49 && i > 44    {
+                            self.rentData.append(self.priceAndProduct[i])
+                        }
+                        else if i < 51 && i > 48    {
+                            self.buyApartmentData.append(self.priceAndProduct[i])
+                        }
+                        else if i < 53 && i > 50    {
+                            self.salariesData.append(self.priceAndProduct[i])
+                        }
+                    }
+                    
+                    self.restaurantArr = self.restaurantData
+                    self.groceriesArr = self.groceriesData
+                    self.transportationArr = self.transportationData
+                    self.utilitiesArr = self.utilitiesData
+                    self.sportsAndLeisureArr = self.sportsAndLeisureData
+                    self.clothingArr = self.clothingData
+                    self.rentArr = self.rentData
+                    self.buyApartmentsArr = self.buyApartmentData
+                    self.salariesArr = self.salariesData
+                    
                     dispatch_async(dispatch_get_main_queue()) {
                         
                         self.cityLabel.text = self.first
                         self.weatherDescriptionLabel.text = self.descript
                         self.temperatureLabel.text = self.temperature
                         
-                        for i in self.priceAndProduct.indices    {
-                            if i < 8    {
-                                self.restaurantData.append(self.priceAndProduct[i])
-                            }
-                            else if i < 27 && i > 7 {
-                                self.groceriesData.append(self.priceAndProduct[i])
-                            }
-                            else if i < 35 && i > 26    {
-                                self.transportationData.append(self.priceAndProduct[i])
-                            }
-                            else if i < 38 && i > 34    {
-                                self.utilitiesData.append(self.priceAndProduct[i])
-                            }
-                            else if i < 41 && i > 37    {
-                                self.sportsAndLeisureData.append(self.priceAndProduct[i])
-                            }
-                            else if i < 45 && i > 40    {
-                                self.clothingData.append(self.priceAndProduct[i])
-                            }
-                            else if i < 49 && i > 44    {
-                                self.rentData.append(self.priceAndProduct[i])
-                            }
-                            else if i < 51 && i > 48    {
-                                self.buyApartmentData.append(self.priceAndProduct[i])
-                            }
-                            else if i < 53 && i > 50    {
-                                self.salariesData.append(self.priceAndProduct[i])
-                            }
-                        }
-  
+                        print("city: \(self.first)")
+                        print("descript: \(self.descript)")
+                        print("temperature: \(self.temperature)")
                     }
+                    self.priceAndProduct.removeAll()
+                    self.restaurantData.removeAll()
+                    self.groceriesData.removeAll()
+                    self.transportationData.removeAll()
+                    self.utilitiesData.removeAll()
+                    self.sportsAndLeisureData.removeAll()
+                    self.clothingData.removeAll()
+                    self.rentData.removeAll()
+                    self.buyApartmentData.removeAll()
+                    self.salariesData.removeAll()
                 }
             }
             task.resume()
@@ -375,8 +427,31 @@ class DashboardViewController: UITableViewController, UISearchBarDelegate {
         super.viewDidLoad()
         
         
-        // create different array for the different categories
 //        for i in priceAndProduct.indices    {
+//            if priceAndProduct.isEmpty    {
+//                print("priceAndProduct is empty")
+//            }
+//            else{
+//                print("priceAndProduct[i]: \(priceAndProduct[i])")
+//            }
+//            
+//        }
+//        for i in restaurantData.indices {
+//            print("restaurantData[i]: \(restaurantData[i])")
+//        }
+        
+
+        
+        
+        
+        //      create different array for the different categories
+
+        
+        
+        
+        
+        
+        //        for i in priceAndProduct.indices    {
 //            if i < 8    {
 //                restaurantData.append(priceAndProduct[i])
 //            }
@@ -405,6 +480,7 @@ class DashboardViewController: UITableViewController, UISearchBarDelegate {
 //                salariesData.append(priceAndProduct[i])
 //            }
 //        }
+
         NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: Selector("updateTime"), userInfo: nil, repeats: true)
         
 //        for i in restaurantData.indices {
@@ -416,19 +492,19 @@ class DashboardViewController: UITableViewController, UISearchBarDelegate {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "toRestaurant"   {
             let restaurantViewController = segue.destinationViewController as! Restaurant
-            restaurantViewController.restaurantData = restaurantData
+            restaurantViewController.restaurantData = restaurantArr
         }
         else if segue.identifier == "toGroceries"   {
             let groceriesViewController = segue.destinationViewController as! Groceries
-            groceriesViewController.groceriesData = groceriesData
+            groceriesViewController.groceriesData = groceriesArr
         }
         else if segue.identifier == "toTransportation"   {
             let transportationViewController = segue.destinationViewController as! Transportation
-            transportationViewController.transportationData = transportationData
+            transportationViewController.transportationData = transportationArr
         }
         else if segue.identifier == "toSportsAndLeisure"    {
             let sportsAndLeisureViewController = segue.destinationViewController as! SportsAndLeisure
-            sportsAndLeisureViewController.sportsAndLeisureData = sportsAndLeisureData
+            sportsAndLeisureViewController.sportsAndLeisureData = sportsAndLeisureArr
         }
     }
     
@@ -443,6 +519,15 @@ extension DashboardViewController: SelectedCellProtocol {
         
         // separate the formattedAddress into city, state, country
         let seperatedformattedAddress = address.componentsSeparatedByString(", ")
+        
+//        for i in seperatedformattedAddress.indices  {
+//            if seperatedformattedAddress.isEmpty    {
+//                print("no city")
+//            }
+//            else    {
+//                print(seperatedformattedAddress[i])
+//            }
+//        }
         
         // countries that use a state
         if seperatedformattedAddress.count == 3 {
@@ -490,11 +575,23 @@ extension DashboardViewController: SelectedCellProtocol {
             }
         }
         else if seperatedformattedAddress.count == 2 {
-            let city = seperatedformattedAddress[0]
-            let country = seperatedformattedAddress[1]
+            let first = seperatedformattedAddress[0]
+            let second = seperatedformattedAddress[1]
             
-            load(country, city1: city)
-            getWeather("api.openweathermap.org/data/2.5/weather?q=\(city)&id=524901&APPID=581c938a5549bc5efafc393d7f18af9b")
+            if first.containsString(" ") || second.containsString(" ") {
+                let city = first.stringByReplacingOccurrencesOfString(" ", withString: "+")
+                let country = second.stringByReplacingOccurrencesOfString(" ", withString: "+")
+                load(country, city1: city)
+                getWeather("api.openweathermap.org/data/2.5/weather?q=\(city)&id=524901&APPID=581c938a5549bc5efafc393d7f18af9b")
+
+            }
+            
+            else    {
+                let city = first
+                let country = second
+                load(country, city1: city)
+                getWeather("api.openweathermap.org/data/2.5/weather?q=\(city)&id=524901&APPID=581c938a5549bc5efafc393d7f18af9b")
+            }
         }
         else    {
             print("fix this")

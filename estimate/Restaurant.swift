@@ -35,6 +35,7 @@ class Restaurant: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         product1Label.text = restaurantData[0].0
         product2Label.text = restaurantData[1].0
         product3Label.text = restaurantData[2].0
