@@ -24,7 +24,6 @@
 		ED008CFD1D56EAE0003D6662 /* ListOfContries.json in Resources */ = {isa = PBXBuildFile; fileRef = ED008CFC1D56EAE0003D6662 /* ListOfContries.json */; };
 		ED008CFF1D59525B003D6662 /* weather.png in Resources */ = {isa = PBXBuildFile; fileRef = ED008CFE1D59525B003D6662 /* weather.png */; };
 		ED0764701D38004400314955 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED07646F1D38004400314955 /* AppDelegate.swift */; };
-		ED0764721D38004400314955 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0764711D38004400314955 /* ViewController.swift */; };
 		ED0764751D38004400314955 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED0764731D38004400314955 /* Main.storyboard */; };
 		ED07647A1D38004400314955 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED0764781D38004400314955 /* LaunchScreen.storyboard */; };
 		ED0764851D38004500314955 /* estimateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0764841D38004500314955 /* estimateTests.swift */; };
@@ -75,7 +74,6 @@
 		ED008CFE1D59525B003D6662 /* weather.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = weather.png; sourceTree = "<group>"; };
 		ED07646C1D38004400314955 /* estimate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = estimate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED07646F1D38004400314955 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		ED0764711D38004400314955 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		ED0764741D38004400314955 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		ED0764791D38004400314955 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ED07647B1D38004400314955 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -171,7 +169,6 @@
 				ED008CFC1D56EAE0003D6662 /* ListOfContries.json */,
 				ED008CFA1D56EA0B003D6662 /* Common-Currency.json */,
 				ED07646F1D38004400314955 /* AppDelegate.swift */,
-				ED0764711D38004400314955 /* ViewController.swift */,
 				ED2FFE391D502565002450A5 /* DashboardViewController.swift */,
 				ED4A56CC1D5A86C7004820E4 /* SearchResultsController.swift */,
 				ED008CCB1D540EB3003D6662 /* Restaurant.swift */,
@@ -482,7 +479,6 @@
 			files = (
 				ED008CD21D542373003D6662 /* SportsAndLeisure.swift in Sources */,
 				ED008CCC1D540EB3003D6662 /* Restaurant.swift in Sources */,
-				ED0764721D38004400314955 /* ViewController.swift in Sources */,
 				ED008CCE1D5413AB003D6662 /* Groceries.swift in Sources */,
 				ED4A56CD1D5A86C7004820E4 /* SearchResultsController.swift in Sources */,
 				ED0764701D38004400314955 /* AppDelegate.swift in Sources */,
