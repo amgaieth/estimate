@@ -222,6 +222,7 @@ class DashboardViewController: UITableViewController, UISearchBarDelegate {
                         print("descript: \(self.descript)")
                         print("temperature: \(self.temperature)")
                     }
+                    
                     self.priceAndProduct.removeAll()
                     self.restaurantData.removeAll()
                     self.groceriesData.removeAll()
@@ -446,6 +447,10 @@ class DashboardViewController: UITableViewController, UISearchBarDelegate {
             let sportsAndLeisureViewController = segue.destinationViewController as! SportsAndLeisure
             sportsAndLeisureViewController.sportsAndLeisureData = sportsAndLeisureArr
         }
+        else if segue.identifier == "toUtilities"   {
+            let utilitiesViewController = segue.destinationViewController as! Utilities
+            utilitiesViewController.utilitiesData = utilitiesArr
+        }
     }
     func unwindSelectProblem(segue: UIStoryboardSegue)   {
     }
@@ -454,6 +459,8 @@ class DashboardViewController: UITableViewController, UISearchBarDelegate {
 extension DashboardViewController: SelectedCellProtocol {
     func didSelectedCell(text: String) {
         let address = text
+        
+        print("cell clicked; address: \(address)")
         
         // separate the formattedAddress into city, state, country
         let seperatedformattedAddress = address.componentsSeparatedByString(", ")
@@ -512,7 +519,6 @@ extension DashboardViewController: SelectedCellProtocol {
                 let country = second.stringByReplacingOccurrencesOfString(" ", withString: "+")
                 load(country, city1: city)
                 getWeather("api.openweathermap.org/data/2.5/weather?q=\(city)&id=524901&APPID=581c938a5549bc5efafc393d7f18af9b")
-
             }
             
             else    {

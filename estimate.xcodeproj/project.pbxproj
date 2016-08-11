@@ -19,7 +19,6 @@
 		ED008CED1D54417C003D6662 /* GeoceryFinal.png in Resources */ = {isa = PBXBuildFile; fileRef = ED008CEC1D54417C003D6662 /* GeoceryFinal.png */; };
 		ED008CEF1D5445EE003D6662 /* Transportation.png in Resources */ = {isa = PBXBuildFile; fileRef = ED008CEE1D5445EE003D6662 /* Transportation.png */; };
 		ED008CF71D553569003D6662 /* Sports.png in Resources */ = {isa = PBXBuildFile; fileRef = ED008CF61D553569003D6662 /* Sports.png */; };
-		ED008CF91D56E79E003D6662 /* Currrency.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED008CF81D56E79E003D6662 /* Currrency.swift */; };
 		ED008CFB1D56EA0B003D6662 /* Common-Currency.json in Resources */ = {isa = PBXBuildFile; fileRef = ED008CFA1D56EA0B003D6662 /* Common-Currency.json */; };
 		ED008CFD1D56EAE0003D6662 /* ListOfContries.json in Resources */ = {isa = PBXBuildFile; fileRef = ED008CFC1D56EAE0003D6662 /* ListOfContries.json */; };
 		ED008CFF1D59525B003D6662 /* weather.png in Resources */ = {isa = PBXBuildFile; fileRef = ED008CFE1D59525B003D6662 /* weather.png */; };
@@ -32,6 +31,7 @@
 		ED2FFE3A1D502565002450A5 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2FFE391D502565002450A5 /* DashboardViewController.swift */; };
 		ED4A56CB1D59D8E6004820E4 /* clock.png in Resources */ = {isa = PBXBuildFile; fileRef = ED4A56CA1D59D8E6004820E4 /* clock.png */; };
 		ED4A56CD1D5A86C7004820E4 /* SearchResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4A56CC1D5A86C7004820E4 /* SearchResultsController.swift */; };
+		ED9D36CE1D5BFDEE00DDB8D9 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9D36CD1D5BFDEE00DDB8D9 /* Utilities.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,7 +69,6 @@
 		ED008CEC1D54417C003D6662 /* GeoceryFinal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GeoceryFinal.png; sourceTree = "<group>"; };
 		ED008CEE1D5445EE003D6662 /* Transportation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Transportation.png; sourceTree = "<group>"; };
 		ED008CF61D553569003D6662 /* Sports.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Sports.png; sourceTree = "<group>"; };
-		ED008CF81D56E79E003D6662 /* Currrency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Currrency.swift; sourceTree = "<group>"; };
 		ED008CFA1D56EA0B003D6662 /* Common-Currency.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Common-Currency.json"; sourceTree = "<group>"; };
 		ED008CFC1D56EAE0003D6662 /* ListOfContries.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ListOfContries.json; sourceTree = "<group>"; };
 		ED008CFE1D59525B003D6662 /* weather.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = weather.png; sourceTree = "<group>"; };
@@ -88,6 +87,7 @@
 		ED2FFE391D502565002450A5 /* DashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		ED4A56CA1D59D8E6004820E4 /* clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clock.png; sourceTree = "<group>"; };
 		ED4A56CC1D5A86C7004820E4 /* SearchResultsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsController.swift; sourceTree = "<group>"; };
+		ED9D36CD1D5BFDEE00DDB8D9 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		FB21F719B5F7B5F7DFB32A2F /* Pods_estimate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_estimate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -170,13 +170,13 @@
 				ED008CFC1D56EAE0003D6662 /* ListOfContries.json */,
 				ED008CFA1D56EA0B003D6662 /* Common-Currency.json */,
 				ED07646F1D38004400314955 /* AppDelegate.swift */,
-				ED2FFE391D502565002450A5 /* DashboardViewController.swift */,
 				ED4A56CC1D5A86C7004820E4 /* SearchResultsController.swift */,
+				ED2FFE391D502565002450A5 /* DashboardViewController.swift */,
 				ED008CCB1D540EB3003D6662 /* Restaurant.swift */,
 				ED008CCD1D5413AB003D6662 /* Groceries.swift */,
 				ED008CCF1D5420C4003D6662 /* Transportation.swift */,
 				ED008CD11D542373003D6662 /* SportsAndLeisure.swift */,
-				ED008CF81D56E79E003D6662 /* Currrency.swift */,
+				ED9D36CD1D5BFDEE00DDB8D9 /* Utilities.swift */,
 				ED0764731D38004400314955 /* Main.storyboard */,
 				ED008CFE1D59525B003D6662 /* weather.png */,
 				ED008CD31D542C99003D6662 /* Background.JPG */,
@@ -487,8 +487,8 @@
 				ED4A56CD1D5A86C7004820E4 /* SearchResultsController.swift in Sources */,
 				ED0764701D38004400314955 /* AppDelegate.swift in Sources */,
 				ED2FFE3A1D502565002450A5 /* DashboardViewController.swift in Sources */,
+				ED9D36CE1D5BFDEE00DDB8D9 /* Utilities.swift in Sources */,
 				ED008CD01D5420C4003D6662 /* Transportation.swift in Sources */,
-				ED008CF91D56E79E003D6662 /* Currrency.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
