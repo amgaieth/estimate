@@ -15,6 +15,8 @@ class DashboardViewController: UITableViewController, UISearchBarDelegate {
     
     var first = String()
     
+    var address = String()
+    
     var searchResultController: SearchResultsController!
     var resultsArray = [String]()
     
@@ -93,293 +95,6 @@ class DashboardViewController: UITableViewController, UISearchBarDelegate {
         }
     }
     
-    func load(country1: String, city1: String) {
-
-        let attemptedUrl = NSURL(string: "http://www.numbeo.com/cost-of-living/city_result.jsp?country=\(country1)&city=\(city1)")
-        
-        if let url = attemptedUrl   {
-            
-            let task = NSURLSession.sharedSession().dataTaskWithURL(url) { (data, response, error) -> Void in
-                
-                if let urlContent = data    {
-                    
-                    let webContent = NSString(data: urlContent, encoding: NSUTF8StringEncoding)
-                    
-                    let lines = webContent?.componentsSeparatedByString("\n")
-                    
-                    var filteredArray = lines!.filter {   $0.containsString("<tr><td")   }
-                    
-                    var filteredArrayOfProducts = [String]()
-                    
-                    for i in filteredArray.indices  {
-                        if filteredArray[i].rangeOfString("</td> <td style=\"text-align: right\" class=\"priceValue \">") != nil || filteredArray[i].rangeOfString("</td> <td style=\"text-align: right\" class=\"priceValue tr_highlighted\">") != nil {
-                            filteredArrayOfProducts.append(filteredArray[i])
-                        }
-                    }
-                    
-                    var x = [String]()
-                    var y = [String]()
-                    
-                    for i in lines!.indices {
-                        if lines![i].containsString("<option value")    {
-                            x.append(lines![i])
-                        }
-                    }
-                    
-                    for i in x.indices  {
-                        if x[i].containsString("selected=\"selected\">")    {
-                            y.append(x[i])
-                        }
-                        
-                    }
-                    
-                    let currencyArr = y[1].componentsSeparatedByString(" selected=\"selected\">")
-                    
-                    let currency = currencyArr[1].stringByReplacingOccurrencesOfString("</option>", withString: "")
-                    
-                    var productAndPrice: String
-                    var productAndPriceArray = [String]()
-                    
-                    for i in filteredArrayOfProducts.indices {
-                        if filteredArrayOfProducts[i].rangeOfString("</td> <td style=\"text-align: right\" class=\"priceValue \">") != nil  {
-                            // remove "</td> <td style=\"text-align: right\" class=\"priceValue \">"
-                            productAndPrice = filteredArrayOfProducts[i].stringByReplacingOccurrencesOfString("</td> <td style=\"text-align: right\" class=\"priceValue \">", withString: "")
-                            // remove <tr><td>
-                            productAndPrice = productAndPrice.stringByReplacingOccurrencesOfString("<tr><td>", withString: "")
-                            // remove the code for currency
-                            productAndPriceArray.append(productAndPrice)
-                        }
-                        else if filteredArrayOfProducts[i].rangeOfString("</td> <td style=\"text-align: right\" class=\"priceValue tr_highlighted\">") != nil   {
-                            productAndPrice = filteredArrayOfProducts[i].stringByReplacingOccurrencesOfString("</td> <td style=\"text-align: right\" class=\"priceValue tr_highlighted\">", withString: "")
-                            productAndPrice = productAndPrice.stringByReplacingOccurrencesOfString("<tr><td class=\"tr_highlighted\">", withString: "")
-                            productAndPriceArray.append(productAndPrice)
-                        }
-                    }
-                    
-                    var product: String
-                    var price: String
-                    // array that has two elements; the product and the price
-                    var prodAndpriceArray = [String]()
-                    
-                    for i in productAndPriceArray.indices   {
-                        prodAndpriceArray = productAndPriceArray[i].componentsSeparatedByString("  ")
-                        product = prodAndpriceArray[0]
-                        price = prodAndpriceArray[1]
-                        let priceArray = price.componentsSeparatedByString("&")
-                        price = priceArray[0] + " " + currency
-                        self.priceAndProduct.append((product, price))
-                        
-                    }
-                    
-                    
-                    for i in self.priceAndProduct.indices    {
-                        if i < 8    {
-                            self.restaurantData.append(self.priceAndProduct[i])
-                        }
-                        else if i < 27 && i > 7 {
-                            self.groceriesData.append(self.priceAndProduct[i])
-                        }
-                        else if i < 35 && i > 26    {
-                            self.transportationData.append(self.priceAndProduct[i])
-                        }
-                        else if i < 38 && i > 34    {
-                            self.utilitiesData.append(self.priceAndProduct[i])
-                        }
-                        else if i < 41 && i > 37    {
-                            self.sportsAndLeisureData.append(self.priceAndProduct[i])
-                        }
-                        else if i < 45 && i > 40    {
-                            self.clothingData.append(self.priceAndProduct[i])
-                        }
-                        else if i < 49 && i > 44    {
-                            self.rentData.append(self.priceAndProduct[i])
-                        }
-                        else if i < 51 && i > 48    {
-                            self.buyApartmentData.append(self.priceAndProduct[i])
-                        }
-                        else if i < 53 && i > 50    {
-                            self.salariesData.append(self.priceAndProduct[i])
-                        }
-                    }
-                    
-                    self.restaurantArr = self.restaurantData
-                    self.groceriesArr = self.groceriesData
-                    self.transportationArr = self.transportationData
-                    self.utilitiesArr = self.utilitiesData
-                    self.sportsAndLeisureArr = self.sportsAndLeisureData
-                    self.clothingArr = self.clothingData
-                    self.rentArr = self.rentData
-                    self.buyApartmentsArr = self.buyApartmentData
-                    self.salariesArr = self.salariesData
-                    
-                    dispatch_async(dispatch_get_main_queue()) {
-                        
-                        self.cityLabel.text = self.first
-                        self.weatherDescriptionLabel.text = self.descript
-                        self.temperatureLabel.text = self.temperature
-                        
-                        print("city: \(self.first)")
-                        print("descript: \(self.descript)")
-                        print("temperature: \(self.temperature)")
-                    }
-                    
-                    self.priceAndProduct.removeAll()
-                    self.restaurantData.removeAll()
-                    self.groceriesData.removeAll()
-                    self.transportationData.removeAll()
-                    self.utilitiesData.removeAll()
-                    self.sportsAndLeisureData.removeAll()
-                    self.clothingData.removeAll()
-                    self.rentData.removeAll()
-                    self.buyApartmentData.removeAll()
-                    self.salariesData.removeAll()
-                }
-            }
-            task.resume()
-        }
-    }
-    
-    func load(country1: String, city1: String, state1: String) {
-        let attemptedUrl = NSURL(string: "http://www.numbeo.com/cost-of-living/city_result.jsp?country=\(country1)&city=\(city1)%2C+\(state1)")
-        
-        if let url = attemptedUrl   {
-            
-            let task = NSURLSession.sharedSession().dataTaskWithURL(url) { (data, response, error) -> Void in
-                
-                if let urlContent = data    {
-                    
-                    let webContent = NSString(data: urlContent, encoding: NSUTF8StringEncoding)
-                    
-                    let lines = webContent?.componentsSeparatedByString("\n")
-                    
-                    var filteredArray = lines!.filter {   $0.containsString("<tr><td")   }
-                    
-                    var filteredArrayOfProducts = [String]()
-                    
-                    for i in filteredArray.indices  {
-                        if filteredArray[i].rangeOfString("</td> <td style=\"text-align: right\" class=\"priceValue \">") != nil || filteredArray[i].rangeOfString("</td> <td style=\"text-align: right\" class=\"priceValue tr_highlighted\">") != nil {
-                            filteredArrayOfProducts.append(filteredArray[i])
-                        }
-                    }
-                    
-                    var x = [String]()
-                    var y = [String]()
-                    
-                    for i in lines!.indices {
-                        if lines![i].containsString("<option value")    {
-                            x.append(lines![i])
-                        }
-                    }
-                    
-                    for i in x.indices  {
-                        if x[i].containsString("selected=\"selected\">")    {
-                            y.append(x[i])
-                        }
-                    }
-                    
-                    let currencyArr = y[1].componentsSeparatedByString(" selected=\"selected\">")
-                    
-                    let currency = currencyArr[1].stringByReplacingOccurrencesOfString("</option>", withString: "")
-                    
-                    var productAndPrice: String
-                    var productAndPriceArray = [String]()
-                    
-                    for i in filteredArrayOfProducts.indices {
-                        if filteredArrayOfProducts[i].rangeOfString("</td> <td style=\"text-align: right\" class=\"priceValue \">") != nil  {
-                            // remove "</td> <td style=\"text-align: right\" class=\"priceValue \">"
-                            productAndPrice = filteredArrayOfProducts[i].stringByReplacingOccurrencesOfString("</td> <td style=\"text-align: right\" class=\"priceValue \">", withString: "")
-                            // remove <tr><td>
-                            productAndPrice = productAndPrice.stringByReplacingOccurrencesOfString("<tr><td>", withString: "")
-                            productAndPriceArray.append(productAndPrice)
-                        }
-                        else if filteredArrayOfProducts[i].rangeOfString("</td> <td style=\"text-align: right\" class=\"priceValue tr_highlighted\">") != nil   {
-                            productAndPrice = filteredArrayOfProducts[i].stringByReplacingOccurrencesOfString("</td> <td style=\"text-align: right\" class=\"priceValue tr_highlighted\">", withString: "")
-                            productAndPrice = productAndPrice.stringByReplacingOccurrencesOfString("<tr><td class=\"tr_highlighted\">", withString: "")
-                            productAndPriceArray.append(productAndPrice)
-                        }
-                    }
-                    
-                    var product: String
-                    var price: String
-                    // array that has two elements; the product and the price
-                    var prodAndpriceArray = [String]()
-
-                    
-                    for i in productAndPriceArray.indices   {
-                        prodAndpriceArray = productAndPriceArray[i].componentsSeparatedByString("  ")
-                        product = prodAndpriceArray[0]
-                        price = prodAndpriceArray[1]
-                        let priceArray = price.componentsSeparatedByString("&")
-                        price = priceArray[0] + " " + currency
-                        self.priceAndProduct.append((product, price))
-                    }
-                    
-                    for i in self.priceAndProduct.indices    {
-                        if i < 8    {
-                            self.restaurantData.append(self.priceAndProduct[i])
-                        }
-                        else if i < 27 && i > 7 {
-                            self.groceriesData.append(self.priceAndProduct[i])
-                        }
-                        else if i < 35 && i > 26    {
-                            self.transportationData.append(self.priceAndProduct[i])
-                        }
-                        else if i < 38 && i > 34    {
-                            self.utilitiesData.append(self.priceAndProduct[i])
-                        }
-                        else if i < 41 && i > 37    {
-                            self.sportsAndLeisureData.append(self.priceAndProduct[i])
-                        }
-                        else if i < 45 && i > 40    {
-                            self.clothingData.append(self.priceAndProduct[i])
-                        }
-                        else if i < 49 && i > 44    {
-                            self.rentData.append(self.priceAndProduct[i])
-                        }
-                        else if i < 51 && i > 48    {
-                            self.buyApartmentData.append(self.priceAndProduct[i])
-                        }
-                        else if i < 53 && i > 50    {
-                            self.salariesData.append(self.priceAndProduct[i])
-                        }
-                    }
-                    
-                    self.restaurantArr = self.restaurantData
-                    self.groceriesArr = self.groceriesData
-                    self.transportationArr = self.transportationData
-                    self.utilitiesArr = self.utilitiesData
-                    self.sportsAndLeisureArr = self.sportsAndLeisureData
-                    self.clothingArr = self.clothingData
-                    self.rentArr = self.rentData
-                    self.buyApartmentsArr = self.buyApartmentData
-                    self.salariesArr = self.salariesData
-                    
-                    dispatch_async(dispatch_get_main_queue()) {
-                        
-                        self.cityLabel.text = self.first
-                        self.weatherDescriptionLabel.text = self.descript
-                        self.temperatureLabel.text = self.temperature
-                        
-                        print("city: \(self.first)")
-                        print("descript: \(self.descript)")
-                        print("temperature: \(self.temperature)")
-                    }
-                    self.priceAndProduct.removeAll()
-                    self.restaurantData.removeAll()
-                    self.groceriesData.removeAll()
-                    self.transportationData.removeAll()
-                    self.utilitiesData.removeAll()
-                    self.sportsAndLeisureData.removeAll()
-                    self.clothingData.removeAll()
-                    self.rentData.removeAll()
-                    self.buyApartmentData.removeAll()
-                    self.salariesData.removeAll()
-                }
-            }
-            task.resume()
-        }
-    }
-    
     func getWeather(urlString: String)   {
         let url = NSURL(string: "http://" + urlString)
         let task = NSURLSession.sharedSession().dataTaskWithURL(url!)   { (data, response, error) in
@@ -394,9 +109,183 @@ class DashboardViewController: UITableViewController, UISearchBarDelegate {
         }
         task.resume()
     }
+
     
-    func setLabels(weatherData: NSData) {
+    func loadNumbeo(country1: String, city1: String, state1: String)   {
+        let attemptedUrl = NSURL(string: "http://www.numbeo.com/cost-of-living/city_result.jsp?country=\(country1)&city=\(city1)%2C+\(state1)")
         
+        if let url = attemptedUrl   {
+            
+            let task = NSURLSession.sharedSession().dataTaskWithURL(url) { (data, response, error) -> Void in
+                
+                if let urlContent = data    {
+                    
+                    let webContent = NSString(data: urlContent, encoding: NSUTF8StringEncoding)
+                    
+                    if ((webContent?.containsString("Numbeo doesn't have that city in the database")) != nil)  {
+                        print("info about this city is unavailble")
+                    }
+                    else    {
+                        let lines = webContent?.componentsSeparatedByString("\n")
+                        self.getProducts(lines!)
+                    }
+                }
+            }
+            task.resume()
+        }
+    }
+    
+    func loadNumbeo(country1: String, city1: String)  {
+        let attemptedUrl = NSURL(string: "http://www.numbeo.com/cost-of-living/city_result.jsp?country=\(country1)&city=\(city1)")
+        if let url = attemptedUrl   {
+            
+            let task = NSURLSession.sharedSession().dataTaskWithURL(url) { (data, response, error) -> Void in
+                
+                if let urlContent = data    {
+                    
+                    let webContent = NSString(data: urlContent, encoding: NSUTF8StringEncoding)
+                    
+                    if ((webContent?.containsString("Numbeo doesn't have that city in the database")) != nil)  {
+                        print("info about this city is unavailble")
+                    }
+                    else    {
+                        let lines = webContent?.componentsSeparatedByString("\n")
+                        self.getProducts(lines!)
+                    }
+                }
+            }
+            task.resume()
+        }
+    }
+    
+    func getProducts(lines: [String])  {
+        var filteredArray = lines.filter {   $0.containsString("<tr><td")   }
+        
+        var filteredArrayOfProducts = [String]()
+        
+        for i in filteredArray.indices  {
+            if filteredArray[i].rangeOfString("</td> <td style=\"text-align: right\" class=\"priceValue \">") != nil || filteredArray[i].rangeOfString("</td> <td style=\"text-align: right\" class=\"priceValue tr_highlighted\">") != nil {
+                filteredArrayOfProducts.append(filteredArray[i])
+            }
+        }
+        
+        var x = [String]()
+        var y = [String]()
+        
+        for i in lines.indices {
+            if lines[i].containsString("<option value")    {
+                x.append(lines[i])
+            }
+        }
+        
+        for i in x.indices  {
+            if x[i].containsString("selected=\"selected\">")    {
+                y.append(x[i])
+            }
+        }
+        
+        let currencyArr = y[1].componentsSeparatedByString(" selected=\"selected\">")
+        
+        let currency = currencyArr[1].stringByReplacingOccurrencesOfString("</option>", withString: "")
+        
+        var productAndPrice: String
+        var productAndPriceArray = [String]()
+        
+        for i in filteredArrayOfProducts.indices {
+            if filteredArrayOfProducts[i].rangeOfString("</td> <td style=\"text-align: right\" class=\"priceValue \">") != nil  {
+                // remove "</td> <td style=\"text-align: right\" class=\"priceValue \">"
+                productAndPrice = filteredArrayOfProducts[i].stringByReplacingOccurrencesOfString("</td> <td style=\"text-align: right\" class=\"priceValue \">", withString: "")
+                // remove <tr><td>
+                productAndPrice = productAndPrice.stringByReplacingOccurrencesOfString("<tr><td>", withString: "")
+                productAndPriceArray.append(productAndPrice)
+            }
+            else if filteredArrayOfProducts[i].rangeOfString("</td> <td style=\"text-align: right\" class=\"priceValue tr_highlighted\">") != nil   {
+                productAndPrice = filteredArrayOfProducts[i].stringByReplacingOccurrencesOfString("</td> <td style=\"text-align: right\" class=\"priceValue tr_highlighted\">", withString: "")
+                productAndPrice = productAndPrice.stringByReplacingOccurrencesOfString("<tr><td class=\"tr_highlighted\">", withString: "")
+                productAndPriceArray.append(productAndPrice)
+            }
+        }
+        
+        var product: String
+        var price: String
+        // array that has two elements; the product and the price
+        var prodAndpriceArray = [String]()
+        
+        
+        for i in productAndPriceArray.indices   {
+            prodAndpriceArray = productAndPriceArray[i].componentsSeparatedByString("  ")
+            product = prodAndpriceArray[0]
+            price = prodAndpriceArray[1]
+            let priceArray = price.componentsSeparatedByString("&")
+            price = priceArray[0] + " " + currency
+            self.priceAndProduct.append((product, price))
+        }
+        
+        for i in self.priceAndProduct.indices    {
+            if i < 8    {
+                self.restaurantData.append(self.priceAndProduct[i])
+            }
+            else if i < 27 && i > 7 {
+                self.groceriesData.append(self.priceAndProduct[i])
+            }
+            else if i < 35 && i > 26    {
+                self.transportationData.append(self.priceAndProduct[i])
+            }
+            else if i < 38 && i > 34    {
+                self.utilitiesData.append(self.priceAndProduct[i])
+            }
+            else if i < 41 && i > 37    {
+                self.sportsAndLeisureData.append(self.priceAndProduct[i])
+            }
+            else if i < 45 && i > 40    {
+                self.clothingData.append(self.priceAndProduct[i])
+            }
+            else if i < 49 && i > 44    {
+                self.rentData.append(self.priceAndProduct[i])
+            }
+            else if i < 51 && i > 48    {
+                self.buyApartmentData.append(self.priceAndProduct[i])
+            }
+            else if i < 53 && i > 50    {
+                self.salariesData.append(self.priceAndProduct[i])
+            }
+        }
+        
+        self.restaurantArr = self.restaurantData
+        self.groceriesArr = self.groceriesData
+        self.transportationArr = self.transportationData
+        self.utilitiesArr = self.utilitiesData
+        self.sportsAndLeisureArr = self.sportsAndLeisureData
+        self.clothingArr = self.clothingData
+        self.rentArr = self.rentData
+        self.buyApartmentsArr = self.buyApartmentData
+        self.salariesArr = self.salariesData
+        
+        dispatch_async(dispatch_get_main_queue()) {
+            
+            self.cityLabel.text = self.address
+            self.weatherDescriptionLabel.text = self.descript
+            self.temperatureLabel.text = self.temperature
+
+            print("city: \(self.first)")
+            print("descript: \(self.descript)")
+            print("temperature: \(self.temperature)")
+        }
+        self.priceAndProduct.removeAll()
+        self.restaurantData.removeAll()
+        self.groceriesData.removeAll()
+        self.transportationData.removeAll()
+        self.utilitiesData.removeAll()
+        self.sportsAndLeisureData.removeAll()
+        self.clothingData.removeAll()
+        self.rentData.removeAll()
+        self.buyApartmentData.removeAll()
+        self.salariesData.removeAll()
+    }
+    
+    
+
+    func setLabels(weatherData: NSData) {
         do  {
             let json = try NSJSONSerialization.JSONObjectWithData(weatherData, options: .AllowFragments) as? NSDictionary
             
@@ -414,7 +303,7 @@ class DashboardViewController: UITableViewController, UISearchBarDelegate {
             }
             
             if let weather = json!["weather"] as? NSArray  {
-                if let description = weather[0]["description"] as? String   {
+                if let description = weather[0]["main"] as? String   {
                     descript = description
                 }
             }
@@ -458,7 +347,8 @@ class DashboardViewController: UITableViewController, UISearchBarDelegate {
 
 extension DashboardViewController: SelectedCellProtocol {
     func didSelectedCell(text: String) {
-        let address = text
+        address = text
+        city = ""
         
         print("cell clicked; address: \(address)")
         
@@ -477,7 +367,9 @@ extension DashboardViewController: SelectedCellProtocol {
                     let state = second.stringByReplacingOccurrencesOfString(" ", withString: "+")
                     let country = third.stringByReplacingOccurrencesOfString(" ", withString: "+")
                     
-                    load(country, city1: city, state1: state)
+                    print("city: \(city)")
+                    
+                    loadNumbeo(country, city1: city, state1: state)
                     getWeather("api.openweathermap.org/data/2.5/weather?q=\(city)&id=524901&APPID=581c938a5549bc5efafc393d7f18af9b")
                     
                 }
@@ -485,7 +377,7 @@ extension DashboardViewController: SelectedCellProtocol {
                     let city = first
                     let state = second
                     let country = third
-                    load(country, city1: city, state1: state)
+                    loadNumbeo(country, city1: city, state1: state)
                     getWeather("api.openweathermap.org/data/2.5/weather?q=\(city)&id=524901&APPID=581c938a5549bc5efafc393d7f18af9b")
                     
                 }
@@ -499,13 +391,13 @@ extension DashboardViewController: SelectedCellProtocol {
                 if first.containsString(" ") || third.containsString(" ") {
                     let city =  first.stringByReplacingOccurrencesOfString(" ", withString: "+")
                     let country = third.stringByReplacingOccurrencesOfString(" ", withString: "+")
-                    load(country, city1: city)
+                    loadNumbeo(country, city1: city)
                     getWeather("api.openweathermap.org/data/2.5/weather?q=\(city)&id=524901&APPID=581c938a5549bc5efafc393d7f18af9b")
                 }
                 else    {
                     let city = first
                     let country = third
-                    load(country, city1: city)
+                    loadNumbeo(country, city1: city)
                     getWeather("api.openweathermap.org/data/2.5/weather?q=\(city)&id=524901&APPID=581c938a5549bc5efafc393d7f18af9b")
                 }
             }
@@ -517,14 +409,14 @@ extension DashboardViewController: SelectedCellProtocol {
             if first.containsString(" ") || second.containsString(" ") {
                 let city = first.stringByReplacingOccurrencesOfString(" ", withString: "+")
                 let country = second.stringByReplacingOccurrencesOfString(" ", withString: "+")
-                load(country, city1: city)
+                loadNumbeo(country, city1: city)
                 getWeather("api.openweathermap.org/data/2.5/weather?q=\(city)&id=524901&APPID=581c938a5549bc5efafc393d7f18af9b")
             }
             
             else    {
                 let city = first
                 let country = second
-                load(country, city1: city)
+                loadNumbeo(country, city1: city)
                 getWeather("api.openweathermap.org/data/2.5/weather?q=\(city)&id=524901&APPID=581c938a5549bc5efafc393d7f18af9b")
             }
         }
