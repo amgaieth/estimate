@@ -28,6 +28,7 @@
 		ED07647A1D38004400314955 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED0764781D38004400314955 /* LaunchScreen.storyboard */; };
 		ED0764851D38004500314955 /* estimateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0764841D38004500314955 /* estimateTests.swift */; };
 		ED0764901D38004500314955 /* estimateUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED07648F1D38004500314955 /* estimateUITests.swift */; };
+		ED2A51071D5BE0A80007D4BF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED2A51061D5BE0A80007D4BF /* Images.xcassets */; };
 		ED2FFE3A1D502565002450A5 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2FFE391D502565002450A5 /* DashboardViewController.swift */; };
 		ED4A56CB1D59D8E6004820E4 /* clock.png in Resources */ = {isa = PBXBuildFile; fileRef = ED4A56CA1D59D8E6004820E4 /* clock.png */; };
 		ED4A56CD1D5A86C7004820E4 /* SearchResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4A56CC1D5A86C7004820E4 /* SearchResultsController.swift */; };
@@ -83,6 +84,7 @@
 		ED07648B1D38004500314955 /* estimateUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = estimateUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED07648F1D38004500314955 /* estimateUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = estimateUITests.swift; sourceTree = "<group>"; };
 		ED0764911D38004500314955 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ED2A51061D5BE0A80007D4BF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		ED2FFE391D502565002450A5 /* DashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		ED4A56CA1D59D8E6004820E4 /* clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clock.png; sourceTree = "<group>"; };
 		ED4A56CC1D5A86C7004820E4 /* SearchResultsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsController.swift; sourceTree = "<group>"; };
@@ -165,7 +167,6 @@
 		ED07646E1D38004400314955 /* estimate */ = {
 			isa = PBXGroup;
 			children = (
-				ED4A56CA1D59D8E6004820E4 /* clock.png */,
 				ED008CFC1D56EAE0003D6662 /* ListOfContries.json */,
 				ED008CFA1D56EA0B003D6662 /* Common-Currency.json */,
 				ED07646F1D38004400314955 /* AppDelegate.swift */,
@@ -183,6 +184,8 @@
 				ED008CF61D553569003D6662 /* Sports.png */,
 				ED008CEC1D54417C003D6662 /* GeoceryFinal.png */,
 				ED008CEE1D5445EE003D6662 /* Transportation.png */,
+				ED4A56CA1D59D8E6004820E4 /* clock.png */,
+				ED2A51061D5BE0A80007D4BF /* Images.xcassets */,
 				ED0764781D38004400314955 /* LaunchScreen.storyboard */,
 				ED07647B1D38004400314955 /* Info.plist */,
 			);
@@ -328,6 +331,7 @@
 				ED008CFD1D56EAE0003D6662 /* ListOfContries.json in Resources */,
 				ED4A56CB1D59D8E6004820E4 /* clock.png in Resources */,
 				ED008CFB1D56EA0B003D6662 /* Common-Currency.json in Resources */,
+				ED2A51071D5BE0A80007D4BF /* Images.xcassets in Resources */,
 				ED008CF71D553569003D6662 /* Sports.png in Resources */,
 				ED0764751D38004400314955 /* Main.storyboard in Resources */,
 			);
@@ -627,6 +631,7 @@
 			baseConfigurationReference = 109A30845857B5D30B015809 /* Pods-estimate.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				INFOPLIST_FILE = estimate/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mgaieth.estimate;
@@ -639,6 +644,7 @@
 			baseConfigurationReference = 29DD6250E1079DDAFD8D4DB6 /* Pods-estimate.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				INFOPLIST_FILE = estimate/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mgaieth.estimate;

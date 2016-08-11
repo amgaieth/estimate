@@ -48,8 +48,8 @@ class DashboardViewController: UITableViewController, UISearchBarDelegate {
     var salariesArr = [(String, String)]()
     
     @IBOutlet weak var weatherDescriptionLabel: UILabel!
-    @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var temperatureLabel: UILabel!
 
     func updateTime()   {
         timeLabel.text = NSDateFormatter.localizedStringFromDate(NSDate(), dateStyle: NSDateFormatterStyle.MediumStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
@@ -425,68 +425,8 @@ class DashboardViewController: UITableViewController, UISearchBarDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-//        for i in priceAndProduct.indices    {
-//            if priceAndProduct.isEmpty    {
-//                print("priceAndProduct is empty")
-//            }
-//            else{
-//                print("priceAndProduct[i]: \(priceAndProduct[i])")
-//            }
-//            
-//        }
-//        for i in restaurantData.indices {
-//            print("restaurantData[i]: \(restaurantData[i])")
-//        }
-        
-
-        
-        
-        
-        //      create different array for the different categories
-
-        
-        
-        
-        
-        
-        //        for i in priceAndProduct.indices    {
-//            if i < 8    {
-//                restaurantData.append(priceAndProduct[i])
-//            }
-//            else if i < 27 && i > 7 {
-//                groceriesData.append(priceAndProduct[i])
-//            }
-//            else if i < 35 && i > 26    {
-//                transportationData.append(priceAndProduct[i])
-//            }
-//            else if i < 38 && i > 34    {
-//                utilitiesData.append(priceAndProduct[i])
-//            }
-//            else if i < 41 && i > 37    {
-//                sportsAndLeisureData.append(priceAndProduct[i])
-//            }
-//            else if i < 45 && i > 40    {
-//                clothingData.append(priceAndProduct[i])
-//            }
-//            else if i < 49 && i > 44    {
-//                rentData.append(priceAndProduct[i])
-//            }
-//            else if i < 51 && i > 48    {
-//                buyApartmentData.append(priceAndProduct[i])
-//            }
-//            else if i < 53 && i > 50    {
-//                salariesData.append(priceAndProduct[i])
-//            }
-//        }
 
         NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: Selector("updateTime"), userInfo: nil, repeats: true)
-        
-//        for i in restaurantData.indices {
-//            print("\(i): \(restaurantData[i])")
-//        }
-        
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -507,9 +447,7 @@ class DashboardViewController: UITableViewController, UISearchBarDelegate {
             sportsAndLeisureViewController.sportsAndLeisureData = sportsAndLeisureArr
         }
     }
-    
     func unwindSelectProblem(segue: UIStoryboardSegue)   {
-        
     }
 }
 
@@ -519,15 +457,6 @@ extension DashboardViewController: SelectedCellProtocol {
         
         // separate the formattedAddress into city, state, country
         let seperatedformattedAddress = address.componentsSeparatedByString(", ")
-        
-//        for i in seperatedformattedAddress.indices  {
-//            if seperatedformattedAddress.isEmpty    {
-//                print("no city")
-//            }
-//            else    {
-//                print(seperatedformattedAddress[i])
-//            }
-//        }
         
         // countries that use a state
         if seperatedformattedAddress.count == 3 {

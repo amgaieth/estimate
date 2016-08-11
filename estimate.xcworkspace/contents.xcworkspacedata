@@ -2,9 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:Icons/Sports.png">
-   </FileRef>
-   <FileRef
       location = "group:estimate.xcodeproj">
    </FileRef>
    <FileRef
