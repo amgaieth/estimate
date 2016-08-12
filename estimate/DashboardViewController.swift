@@ -121,9 +121,17 @@ class DashboardViewController: UITableViewController, UISearchBarDelegate {
                 if let urlContent = data    {
                     
                     let webContent = NSString(data: urlContent, encoding: NSUTF8StringEncoding)
+                    let lines = webContent?.componentsSeparatedByString("\n")
                     
-                        let lines = webContent?.componentsSeparatedByString("\n")
+                    if lines![277].containsString("Numbeo doesn't have that city in the database")   {
+                        let errorAlert = UIAlertController(title: "Information about the selected city is not availble", message: "Please contact customer service.", preferredStyle: .Alert)
+                        errorAlert.addAction(UIAlertAction(title: "OK", style: .Default) { _ in})
+                        self.presentViewController(errorAlert, animated: true){}
+                    }
+                    else    {
                         self.getProducts(lines!)
+
+                    }
                 }
             }
             task.resume()
@@ -139,8 +147,16 @@ class DashboardViewController: UITableViewController, UISearchBarDelegate {
                 if let urlContent = data    {
                     
                     let webContent = NSString(data: urlContent, encoding: NSUTF8StringEncoding)
-                        let lines = webContent?.componentsSeparatedByString("\n")
+                    let lines = webContent?.componentsSeparatedByString("\n")
+                    if lines![277].containsString("Numbeo doesn't have that city in the database")   {
+                        let errorAlert = UIAlertController(title: "Information about the selected city is not availble", message: "Please contact customer service.", preferredStyle: .Alert)
+                        errorAlert.addAction(UIAlertAction(title: "OK", style: .Default) { _ in})
+                        self.presentViewController(errorAlert, animated: true){}
+                    }
+                    else    {
                         self.getProducts(lines!)
+                        
+                    }
                 }
             }
             task.resume()
@@ -355,6 +371,7 @@ extension DashboardViewController: SelectedCellProtocol {
         
         // separate the formattedAddress into city, state, country
         let seperatedformattedAddress = address.componentsSeparatedByString(", ")
+        seperatedformattedAddress.count
         
         // countries that use a state
         if seperatedformattedAddress.count == 3 {
@@ -367,8 +384,6 @@ extension DashboardViewController: SelectedCellProtocol {
                     let city =  first.stringByReplacingOccurrencesOfString(" ", withString: "+")
                     let state = second.stringByReplacingOccurrencesOfString(" ", withString: "+")
                     let country = third.stringByReplacingOccurrencesOfString(" ", withString: "+")
-                    
-                    print("city: \(city)")
                     
                     loadNumbeo(country, city1: city, state1: state)
                     getWeather("api.openweathermap.org/data/2.5/weather?q=\(city)&id=524901&APPID=581c938a5549bc5efafc393d7f18af9b")
@@ -421,8 +436,25 @@ extension DashboardViewController: SelectedCellProtocol {
                 getWeather("api.openweathermap.org/data/2.5/weather?q=\(city)&id=524901&APPID=581c938a5549bc5efafc393d7f18af9b")
             }
         }
+        
+        else if address.containsString("United Arab Emirates") {
+            let seperatedformattedAddress = address.componentsSeparatedByString(" - ")
+            for i in seperatedformattedAddress.indices  {
+                print(seperatedformattedAddress[i])
+            }
+            var city = seperatedformattedAddress[0]
+            var country = seperatedformattedAddress[1]
+            if city.containsString(" ") || country.containsString(" ")  {
+                city = city.stringByReplacingOccurrencesOfString(" ", withString: "+")
+                country = country.stringByReplacingOccurrencesOfString(" ", withString: "+")
+            }
+            loadNumbeo(country, city1: city)
+            getWeather("api.openweathermap.org/data/2.5/weather?q=\(city)&id=524901&APPID=581c938a5549bc5efafc393d7f18af9b")
+        }
         else    {
-            print("fix this")
+            let errorAlert = UIAlertController(title: "Information about the selected city is not availble", message: "Please contact customer service.", preferredStyle: .Alert)
+            errorAlert.addAction(UIAlertAction(title: "OK", style: .Default) { _ in})
+            self.presentViewController(errorAlert, animated: true){}
         }
 
     }

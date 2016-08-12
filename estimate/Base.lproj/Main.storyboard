@@ -5,6 +5,41 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
+        <!--Settings-->
+        <scene sceneID="qme-nM-gKD">
+            <objects>
+                <viewController title="Settings" id="Dn0-wS-qPu" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="TKn-Eq-Hdb"/>
+                        <viewControllerLayoutGuide type="bottom" id="Zj6-2x-utz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="5Re-wG-fF6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="jTj-7W-weh">
+                                <rect key="frame" x="222" y="131" width="121" height="29"/>
+                                <segments>
+                                    <segment title="ºF"/>
+                                    <segment title="ºC"/>
+                                </segments>
+                                <color key="tintColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Weather Units" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jIO-Yw-jPa">
+                                <rect key="frame" x="20" y="131" width="145" height="28"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wed-Wg-nF9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-323.5" y="-616.5"/>
+        </scene>
         <!--Dashboard-->
         <scene sceneID="Crj-JD-qCT">
             <objects>
@@ -34,7 +69,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="Ved-br-GeD" imageView="J9V-NG-MZp" rowHeight="80" style="IBUITableViewCellStyleDefault" id="K4T-MZ-mcZ">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="localTime" textLabel="Ved-br-GeD" imageView="J9V-NG-MZp" rowHeight="80" style="IBUITableViewCellStyleDefault" id="K4T-MZ-mcZ">
                                         <rect key="frame" x="0.0" y="144" width="375" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="K4T-MZ-mcZ" id="MM6-mQ-plf">
@@ -54,6 +89,7 @@
                                                 </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="Kzc-TV-5U9" detailTextLabel="9Ag-Ib-wZh" imageView="hHT-OA-c7e" rowHeight="80" style="IBUITableViewCellStyleValue1" id="jaI-b2-De6">
                                         <rect key="frame" x="0.0" y="224" width="375" height="80"/>
@@ -260,6 +296,16 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Dashboard" id="dLB-zk-SsG">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="slZ-h0-lk0">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="y4M-Ze-g8d">
+                                <rect key="frame" x="16" y="7" width="83" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="settings"/>
+                                <connections>
+                                    <segue destination="Dn0-wS-qPu" kind="show" id="MKZ-aB-Feo"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" tag="1" systemItem="search" id="a0R-70-bV6">
                             <connections>
                                 <action selector="searchWithAdress:" destination="Sxq-jx-V4P" id="sCJ-cm-lsH"/>
