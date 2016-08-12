@@ -122,13 +122,13 @@ class DashboardViewController: UITableViewController, UISearchBarDelegate {
                     
                     let webContent = NSString(data: urlContent, encoding: NSUTF8StringEncoding)
                     
-                    if ((webContent?.containsString("Numbeo doesn't have that city in the database")) != nil)  {
-                        print("info about this city is unavailble")
-                    }
-                    else    {
+//                    if ((webContent?.containsString("Numbeo doesn't have that city in the database")) != nil)  {
+//                        print("info about this city is unavailble")
+//                    }
+//                    else    {
                         let lines = webContent?.componentsSeparatedByString("\n")
                         self.getProducts(lines!)
-                    }
+//                    }
                 }
             }
             task.resume()
@@ -145,13 +145,13 @@ class DashboardViewController: UITableViewController, UISearchBarDelegate {
                     
                     let webContent = NSString(data: urlContent, encoding: NSUTF8StringEncoding)
                     
-                    if ((webContent?.containsString("Numbeo doesn't have that city in the database")) != nil)  {
-                        print("info about this city is unavailble")
-                    }
-                    else    {
+//                    if ((webContent?.containsString("Numbeo doesn't have that city in the database")) != nil)  {
+//                        print("info about this city is unavailble")
+//                    }
+//                    else    {
                         let lines = webContent?.componentsSeparatedByString("\n")
                         self.getProducts(lines!)
-                    }
+//                    }
                 }
             }
             task.resume()
@@ -260,17 +260,7 @@ class DashboardViewController: UITableViewController, UISearchBarDelegate {
         self.rentArr = self.rentData
         self.buyApartmentsArr = self.buyApartmentData
         self.salariesArr = self.salariesData
-        
-        dispatch_async(dispatch_get_main_queue()) {
-            
-            self.cityLabel.text = self.address
-            self.weatherDescriptionLabel.text = self.descript
-            self.temperatureLabel.text = self.temperature
 
-            print("city: \(self.first)")
-            print("descript: \(self.descript)")
-            print("temperature: \(self.temperature)")
-        }
         self.priceAndProduct.removeAll()
         self.restaurantData.removeAll()
         self.groceriesData.removeAll()
@@ -306,6 +296,17 @@ class DashboardViewController: UITableViewController, UISearchBarDelegate {
                 if let description = weather[0]["main"] as? String   {
                     descript = description
                 }
+            }
+            
+            
+            dispatch_async(dispatch_get_main_queue()) {
+                self.cityLabel.text = self.address
+                self.weatherDescriptionLabel.text = self.descript
+                self.temperatureLabel.text = self.temperature
+                
+                print("city: \(self.first)")
+                print("descript: \(self.descript)")
+                print("temperature: \(self.temperature)")
             }
         }
         catch (let error as NSError)   {

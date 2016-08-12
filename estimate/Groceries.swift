@@ -17,6 +17,7 @@ class Groceries: UITableViewController {
     @IBOutlet weak var product3Label: UILabel!
     @IBOutlet weak var product4Label: UILabel!
     @IBOutlet weak var product5Label: UILabel!
+    @IBOutlet weak var product6Label: UILabel!
     @IBOutlet weak var product7Label: UILabel!
     @IBOutlet weak var product8Label: UILabel!
     @IBOutlet weak var product9Label: UILabel!
@@ -30,15 +31,15 @@ class Groceries: UITableViewController {
     @IBOutlet weak var product17Label: UILabel!
     @IBOutlet weak var product18Label: UILabel!
     @IBOutlet weak var product19Label: UILabel!
-    @IBOutlet weak var product6Label: UILabel!
-
+    
+    
+    
     @IBOutlet weak var price1Label: UILabel!
     @IBOutlet weak var price2Label: UILabel!
     @IBOutlet weak var price3Label: UILabel!
     @IBOutlet weak var price4Label: UILabel!
     @IBOutlet weak var price5Label: UILabel!
     @IBOutlet weak var price6Label: UILabel!
-
     @IBOutlet weak var price7Label: UILabel!
     @IBOutlet weak var price8Label: UILabel!
     @IBOutlet weak var price9Label: UILabel!

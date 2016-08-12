@@ -13,10 +13,11 @@ class Utilities: UITableViewController {
     @IBOutlet weak var product1Label: UILabel!
     @IBOutlet weak var product2Label: UILabel!
     @IBOutlet weak var product3Label: UILabel!
-    
+
     @IBOutlet weak var price1Label: UILabel!
     @IBOutlet weak var price2Label: UILabel!
     @IBOutlet weak var price3Label: UILabel!
+
     
     var utilitiesData = [(String, String)]()
     
