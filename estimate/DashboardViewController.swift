@@ -122,13 +122,8 @@ class DashboardViewController: UITableViewController, UISearchBarDelegate {
                     
                     let webContent = NSString(data: urlContent, encoding: NSUTF8StringEncoding)
                     
-//                    if ((webContent?.containsString("Numbeo doesn't have that city in the database")) != nil)  {
-//                        print("info about this city is unavailble")
-//                    }
-//                    else    {
                         let lines = webContent?.componentsSeparatedByString("\n")
                         self.getProducts(lines!)
-//                    }
                 }
             }
             task.resume()
@@ -144,14 +139,8 @@ class DashboardViewController: UITableViewController, UISearchBarDelegate {
                 if let urlContent = data    {
                     
                     let webContent = NSString(data: urlContent, encoding: NSUTF8StringEncoding)
-                    
-//                    if ((webContent?.containsString("Numbeo doesn't have that city in the database")) != nil)  {
-//                        print("info about this city is unavailble")
-//                    }
-//                    else    {
                         let lines = webContent?.componentsSeparatedByString("\n")
                         self.getProducts(lines!)
-//                    }
                 }
             }
             task.resume()
@@ -215,6 +204,9 @@ class DashboardViewController: UITableViewController, UISearchBarDelegate {
         for i in productAndPriceArray.indices   {
             prodAndpriceArray = productAndPriceArray[i].componentsSeparatedByString("  ")
             product = prodAndpriceArray[0]
+            if product.containsString("amp;")   {
+                product = product.stringByReplacingOccurrencesOfString("amp;", withString: "")
+            }
             price = prodAndpriceArray[1]
             let priceArray = price.componentsSeparatedByString("&")
             price = priceArray[0] + " " + currency
@@ -317,7 +309,7 @@ class DashboardViewController: UITableViewController, UISearchBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: Selector("updateTime"), userInfo: nil, repeats: true)
+        NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: #selector(DashboardViewController.updateTime), userInfo: nil, repeats: true)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -340,6 +332,14 @@ class DashboardViewController: UITableViewController, UISearchBarDelegate {
         else if segue.identifier == "toUtilities"   {
             let utilitiesViewController = segue.destinationViewController as! Utilities
             utilitiesViewController.utilitiesData = utilitiesArr
+        }
+        else if segue.identifier == "toClothing"    {
+            let clothingViewController = segue.destinationViewController as! Clothing
+            clothingViewController.clothingData = clothingArr
+        }
+        else if segue.identifier == "toHousing" {
+            let housingViewController = segue.destinationViewController as! Housing
+            housingViewController.housingData = rentArr + buyApartmentsArr
         }
     }
     func unwindSelectProblem(segue: UIStoryboardSegue)   {
