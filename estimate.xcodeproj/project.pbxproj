@@ -27,7 +27,10 @@
 		ED5912DE1D5D97B700857B18 /* Clothing.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5912DD1D5D97B700857B18 /* Clothing.swift */; };
 		ED5912E11D5DB15300857B18 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED5912E01D5DB15300857B18 /* Images.xcassets */; };
 		ED5912E71D5DB9B600857B18 /* Housing.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5912E61D5DB9B600857B18 /* Housing.swift */; };
+		ED5912E91D5DF32B00857B18 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5912E81D5DF32B00857B18 /* Settings.swift */; };
 		ED9D36CE1D5BFDEE00DDB8D9 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9D36CD1D5BFDEE00DDB8D9 /* Utilities.swift */; };
+		EDCDA7041D5FA1530024B169 /* MessageComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDCDA7031D5FA1530024B169 /* MessageComposer.swift */; };
+		EDD8233A1D68BA0B00B64CE4 /* Storyboard4Inch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDD823391D68BA0B00B64CE4 /* Storyboard4Inch.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,7 +82,10 @@
 		ED5912DD1D5D97B700857B18 /* Clothing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Clothing.swift; sourceTree = "<group>"; };
 		ED5912E01D5DB15300857B18 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		ED5912E61D5DB9B600857B18 /* Housing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Housing.swift; sourceTree = "<group>"; };
+		ED5912E81D5DF32B00857B18 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		ED9D36CD1D5BFDEE00DDB8D9 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		EDCDA7031D5FA1530024B169 /* MessageComposer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageComposer.swift; sourceTree = "<group>"; };
+		EDD823391D68BA0B00B64CE4 /* Storyboard4Inch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard4Inch.storyboard; sourceTree = "<group>"; };
 		FB21F719B5F7B5F7DFB32A2F /* Pods_estimate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_estimate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -165,11 +171,14 @@
 				ED07646F1D38004400314955 /* AppDelegate.swift */,
 				ED4A56CC1D5A86C7004820E4 /* SearchResultsController.swift */,
 				ED2FFE391D502565002450A5 /* DashboardViewController.swift */,
+				ED5912E81D5DF32B00857B18 /* Settings.swift */,
 				ED5912DF1D5DB11400857B18 /* Categories */,
 				ED0764731D38004400314955 /* Main.storyboard */,
+				EDD823391D68BA0B00B64CE4 /* Storyboard4Inch.storyboard */,
 				ED5912E01D5DB15300857B18 /* Images.xcassets */,
 				ED0764781D38004400314955 /* LaunchScreen.storyboard */,
 				ED07647B1D38004400314955 /* Info.plist */,
+				EDCDA7031D5FA1530024B169 /* MessageComposer.swift */,
 			);
 			path = estimate;
 			sourceTree = "<group>";
@@ -321,6 +330,7 @@
 			files = (
 				ED5912E11D5DB15300857B18 /* Images.xcassets in Resources */,
 				ED07647A1D38004400314955 /* LaunchScreen.storyboard in Resources */,
+				EDD8233A1D68BA0B00B64CE4 /* Storyboard4Inch.storyboard in Resources */,
 				ED008CFD1D56EAE0003D6662 /* ListOfContries.json in Resources */,
 				ED008CFB1D56EA0B003D6662 /* Common-Currency.json in Resources */,
 				ED5912DC1D5D893C00857B18 /* settingsButton.png in Resources */,
@@ -481,6 +491,8 @@
 				ED2FFE3A1D502565002450A5 /* DashboardViewController.swift in Sources */,
 				ED9D36CE1D5BFDEE00DDB8D9 /* Utilities.swift in Sources */,
 				ED5912DE1D5D97B700857B18 /* Clothing.swift in Sources */,
+				EDCDA7041D5FA1530024B169 /* MessageComposer.swift in Sources */,
+				ED5912E91D5DF32B00857B18 /* Settings.swift in Sources */,
 				ED008CD01D5420C4003D6662 /* Transportation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -623,7 +635,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 109A30845857B5D30B015809 /* Pods-estimate.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -639,7 +651,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 29DD6250E1079DDAFD8D4DB6 /* Pods-estimate.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";

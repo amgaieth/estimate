@@ -151,6 +151,24 @@ class DashboardViewController: UITableViewController, UISearchBarDelegate {
                     if lines![277].containsString("Numbeo doesn't have that city in the database")   {
                         let errorAlert = UIAlertController(title: "Information about the selected city is not availble", message: "Please contact customer service.", preferredStyle: .Alert)
                         errorAlert.addAction(UIAlertAction(title: "OK", style: .Default) { _ in})
+//                        errorAlert.addAction(UIAlertAction(title: "Contact Customer Service", style: .Cancel) { _ in
+//                            let messageComposer = MessageComposer()
+//                            
+//                            if (messageComposer.canSendText()) {
+//                                // Obtain a configured MFMessageComposeViewController
+//                                let messageComposeVC = messageComposer.configuredMessageComposeViewController()
+//                                
+//                                // Present the configured MFMessageComposeViewController instance
+//                                // Note that the dismissal of the VC will be handled by the messageComposer instance,
+//                                // since it implements the appropriate delegate call-back
+//                                self.presentViewController(messageComposeVC, animated: true, completion: nil)
+//                            } else {
+//                                // Let the user know if his/her device isn't able to send text messages
+//                                let errorAler = UIAlertController(title: "Cannot Send Text Message", message: "Your device is not able to send text messages.", preferredStyle: .Alert)
+////                                errorAlert.show()
+//                            }
+//
+//                            })
                         self.presentViewController(errorAlert, animated: true){}
                     }
                     else    {
@@ -162,6 +180,10 @@ class DashboardViewController: UITableViewController, UISearchBarDelegate {
             task.resume()
         }
     }
+    
+//    et errorAlert = UIAlertController(title: "Cannot Send Text Message", message: "Your device is not able to send text messages.", preferredStyle: .Alert)
+//    errorAlert.addAction(UIAlertAction(title: "OK", style: .Default) { _ in })
+//    self.presentViewController(errorAlert, animated: true){}
     
     func getProducts(lines: [String])  {
         var filteredArray = lines.filter {   $0.containsString("<tr><td")   }
@@ -293,6 +315,7 @@ class DashboardViewController: UITableViewController, UISearchBarDelegate {
             
             if let main = json!["main"] as? NSDictionary {
                 if var temp = main["temp"] as? Double   {
+                    print(temperatureUnit)
                     temp = temp - 273.15
                     temp = (temp * 9.0)/5.0 + 32
                     temperature = String(format: "%.1f", temp)
@@ -311,10 +334,6 @@ class DashboardViewController: UITableViewController, UISearchBarDelegate {
                 self.cityLabel.text = self.address
                 self.weatherDescriptionLabel.text = self.descript
                 self.temperatureLabel.text = self.temperature
-                
-                print("city: \(self.first)")
-                print("descript: \(self.descript)")
-                print("temperature: \(self.temperature)")
             }
         }
         catch (let error as NSError)   {
@@ -330,32 +349,84 @@ class DashboardViewController: UITableViewController, UISearchBarDelegate {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "toRestaurant"   {
-            let restaurantViewController = segue.destinationViewController as! Restaurant
-            restaurantViewController.restaurantData = restaurantArr
+            if restaurantArr.isEmpty   {
+                let errorAlert = UIAlertController(title: "Please select a city", message: "Select a city using the search button", preferredStyle: .Alert)
+                errorAlert.addAction(UIAlertAction(title: "OK", style: .Default) { _ in})
+                self.presentViewController(errorAlert, animated: true){}
+            }
+            else    {
+                let restaurantViewController = segue.destinationViewController as! Restaurant
+                restaurantViewController.restaurantData = restaurantArr
+            }
         }
         else if segue.identifier == "toGroceries"   {
-            let groceriesViewController = segue.destinationViewController as! Groceries
-            groceriesViewController.groceriesData = groceriesArr
+            
+            if groceriesArr.isEmpty   {
+                let errorAlert = UIAlertController(title: "Please select a city", message: "Select a city using the search button", preferredStyle: .Alert)
+                errorAlert.addAction(UIAlertAction(title: "OK", style: .Default) { _ in})
+                self.presentViewController(errorAlert, animated: true){}
+            }
+            else    {
+                let groceriesViewController = segue.destinationViewController as! Groceries
+                groceriesViewController.groceriesData = groceriesArr
+            }
         }
         else if segue.identifier == "toTransportation"   {
-            let transportationViewController = segue.destinationViewController as! Transportation
-            transportationViewController.transportationData = transportationArr
+            
+            if transportationArr.isEmpty   {
+                let errorAlert = UIAlertController(title: "Please select a city", message: "Select a city using the search button", preferredStyle: .Alert)
+                errorAlert.addAction(UIAlertAction(title: "OK", style: .Default) { _ in})
+                self.presentViewController(errorAlert, animated: true){}
+            }
+            else    {
+                let transportationViewController = segue.destinationViewController as! Transportation
+                transportationViewController.transportationData = transportationArr
+            }
         }
         else if segue.identifier == "toSportsAndLeisure"    {
-            let sportsAndLeisureViewController = segue.destinationViewController as! SportsAndLeisure
-            sportsAndLeisureViewController.sportsAndLeisureData = sportsAndLeisureArr
+            if sportsAndLeisureArr.isEmpty   {
+                let errorAlert = UIAlertController(title: "Please select a city", message: "Select a city using the search button", preferredStyle: .Alert)
+                errorAlert.addAction(UIAlertAction(title: "OK", style: .Default) { _ in})
+                self.presentViewController(errorAlert, animated: true){}
+            }
+            else    {
+                let sportsAndLeisureViewController = segue.destinationViewController as! SportsAndLeisure
+                sportsAndLeisureViewController.sportsAndLeisureData = sportsAndLeisureArr
+            }
         }
         else if segue.identifier == "toUtilities"   {
-            let utilitiesViewController = segue.destinationViewController as! Utilities
-            utilitiesViewController.utilitiesData = utilitiesArr
+            if utilitiesArr.isEmpty   {
+                let errorAlert = UIAlertController(title: "Please select a city", message: "Select a city using the search button", preferredStyle: .Alert)
+                errorAlert.addAction(UIAlertAction(title: "OK", style: .Default) { _ in})
+                self.presentViewController(errorAlert, animated: true){}
+            }
+            else    {
+                let utilitiesViewController = segue.destinationViewController as! Utilities
+                utilitiesViewController.utilitiesData = utilitiesArr
+            }
         }
         else if segue.identifier == "toClothing"    {
-            let clothingViewController = segue.destinationViewController as! Clothing
-            clothingViewController.clothingData = clothingArr
+            if clothingArr.isEmpty   {
+                let errorAlert = UIAlertController(title: "Please select a city", message: "Select a city using the search button", preferredStyle: .Alert)
+                errorAlert.addAction(UIAlertAction(title: "OK", style: .Default) { _ in})
+                self.presentViewController(errorAlert, animated: true){}
+            }
+            else    {
+                let clothingViewController = segue.destinationViewController as! Clothing
+                clothingViewController.clothingData = clothingArr
+            }
+            
         }
         else if segue.identifier == "toHousing" {
-            let housingViewController = segue.destinationViewController as! Housing
-            housingViewController.housingData = rentArr + buyApartmentsArr
+            if buyApartmentsArr.isEmpty || rentArr.isEmpty  {
+                let errorAlert = UIAlertController(title: "Please select a city", message: "Select a city using the search button", preferredStyle: .Alert)
+                errorAlert.addAction(UIAlertAction(title: "OK", style: .Default) { _ in})
+                self.presentViewController(errorAlert, animated: true){}
+            }
+            else    {
+                let housingViewController = segue.destinationViewController as! Housing
+                housingViewController.housingData = rentArr + buyApartmentsArr
+            }
         }
     }
     func unwindSelectProblem(segue: UIStoryboardSegue)   {
