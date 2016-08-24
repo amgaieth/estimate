@@ -10,17 +10,48 @@ import UIKit
 import GoogleMaps
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate {
 
     var window: UIWindow?
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
         GMSServices.provideAPIKey("AIzaSyCuleRDwKMyu-gimIjwgBm1M7n8eKzxAYA")
         
+        let storyboard = grabStoryboard()
+        
+        // display storyboard
+        self.window?.rootViewController = storyboard.instantiateInitialViewController()
+        self.window?.makeKeyAndVisible()
         
         return true
+    }
+    
+    func grabStoryboard() -> UIStoryboard   {
+        // determine screen size
+        let screenHeight = UIScreen.mainScreen().bounds.size.height
+        var storyboard: UIStoryboard! = nil
+        
+        switch (screenHeight)
+        {
+        // iPhone 4s
+        case 480:
+            storyboard = UIStoryboard(name: "Storyboard3.5Inch", bundle: nil)
+        // iPhone 5s
+        case 568:
+            storyboard = UIStoryboard(name: "Storyboard4Inch", bundle: nil)
+        // iPhone 6
+        case 667:
+            storyboard = UIStoryboard(name: "Main", bundle: nil)
+        // iPhone 6 Plus
+        case 736:
+            storyboard = UIStoryboard(name: "Main", bundle: nil)
+        default:
+            // it's an iPad
+            storyboard = UIStoryboard(name: "Main", bundle: nil)
+        }
+        
+        return storyboard
     }
 
     func applicationWillResignActive(application: UIApplication) {

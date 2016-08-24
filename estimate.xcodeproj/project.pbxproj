@@ -30,7 +30,8 @@
 		ED5912E91D5DF32B00857B18 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5912E81D5DF32B00857B18 /* Settings.swift */; };
 		ED9D36CE1D5BFDEE00DDB8D9 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9D36CD1D5BFDEE00DDB8D9 /* Utilities.swift */; };
 		EDCDA7041D5FA1530024B169 /* MessageComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDCDA7031D5FA1530024B169 /* MessageComposer.swift */; };
-		EDD8233A1D68BA0B00B64CE4 /* Storyboard4Inch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDD823391D68BA0B00B64CE4 /* Storyboard4Inch.storyboard */; };
+		EDD8233C1D68C6A800B64CE4 /* Storyboard4Inch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDD8233B1D68C6A800B64CE4 /* Storyboard4Inch.storyboard */; };
+		EDD8233E1D68CC1600B64CE4 /* Storyboard3.5Inch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDD8233D1D68CC1600B64CE4 /* Storyboard3.5Inch.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,7 +86,8 @@
 		ED5912E81D5DF32B00857B18 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		ED9D36CD1D5BFDEE00DDB8D9 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		EDCDA7031D5FA1530024B169 /* MessageComposer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageComposer.swift; sourceTree = "<group>"; };
-		EDD823391D68BA0B00B64CE4 /* Storyboard4Inch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard4Inch.storyboard; sourceTree = "<group>"; };
+		EDD8233B1D68C6A800B64CE4 /* Storyboard4Inch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard4Inch.storyboard; sourceTree = "<group>"; };
+		EDD8233D1D68CC1600B64CE4 /* Storyboard3.5Inch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard3.5Inch.storyboard; sourceTree = "<group>"; };
 		FB21F719B5F7B5F7DFB32A2F /* Pods_estimate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_estimate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -173,8 +175,7 @@
 				ED2FFE391D502565002450A5 /* DashboardViewController.swift */,
 				ED5912E81D5DF32B00857B18 /* Settings.swift */,
 				ED5912DF1D5DB11400857B18 /* Categories */,
-				ED0764731D38004400314955 /* Main.storyboard */,
-				EDD823391D68BA0B00B64CE4 /* Storyboard4Inch.storyboard */,
+				EDD823401D6B55CD00B64CE4 /* Storyboards */,
 				ED5912E01D5DB15300857B18 /* Images.xcassets */,
 				ED0764781D38004400314955 /* LaunchScreen.storyboard */,
 				ED07647B1D38004400314955 /* Info.plist */,
@@ -213,6 +214,16 @@
 				ED5912E61D5DB9B600857B18 /* Housing.swift */,
 			);
 			name = Categories;
+			sourceTree = "<group>";
+		};
+		EDD823401D6B55CD00B64CE4 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				ED0764731D38004400314955 /* Main.storyboard */,
+				EDD8233D1D68CC1600B64CE4 /* Storyboard3.5Inch.storyboard */,
+				EDD8233B1D68C6A800B64CE4 /* Storyboard4Inch.storyboard */,
+			);
+			name = Storyboards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -330,8 +341,9 @@
 			files = (
 				ED5912E11D5DB15300857B18 /* Images.xcassets in Resources */,
 				ED07647A1D38004400314955 /* LaunchScreen.storyboard in Resources */,
-				EDD8233A1D68BA0B00B64CE4 /* Storyboard4Inch.storyboard in Resources */,
+				EDD8233C1D68C6A800B64CE4 /* Storyboard4Inch.storyboard in Resources */,
 				ED008CFD1D56EAE0003D6662 /* ListOfContries.json in Resources */,
+				EDD8233E1D68CC1600B64CE4 /* Storyboard3.5Inch.storyboard in Resources */,
 				ED008CFB1D56EA0B003D6662 /* Common-Currency.json in Resources */,
 				ED5912DC1D5D893C00857B18 /* settingsButton.png in Resources */,
 				ED0764751D38004400314955 /* Main.storyboard in Resources */,

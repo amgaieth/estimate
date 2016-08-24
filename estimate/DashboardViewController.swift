@@ -344,7 +344,7 @@ class DashboardViewController: UITableViewController, UISearchBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: #selector(DashboardViewController.updateTime), userInfo: nil, repeats: true)
+//        NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: #selector(DashboardViewController.updateTime), userInfo: nil, repeats: true)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

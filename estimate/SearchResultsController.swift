@@ -50,7 +50,5 @@ class SearchResultsController: UITableViewController {
         self.searchResults = array
         self.tableView.reloadData()
     }
-    
-    
 }
 
